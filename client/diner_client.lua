@@ -1196,7 +1196,7 @@ RegisterNetEvent("lusty94_diner:client:PrepareSlicedBread", function()
             if HasItems then
                 if Config.CoreSettings.Sound.UseInteractSound then
                     TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 10, Config.CoreSettings.Sound.SliceIngredients, 0.5)
-                ends
+                end
                 QBCore.Functions.Progressbar("prepare_slicedbread", Config.Language.SlicedBread.ProgressBarName, Config.CoreSettings.ProgressBar.Times.SliceIngredients, false, false, {
                     disableMovement = true,
                     disableCarMovement = true,
