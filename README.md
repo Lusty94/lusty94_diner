@@ -59,6 +59,7 @@ PLEASE MAKE SURE TO READ THIS ENTIRE FILE AS IT COVERS SOME IMPORTANT INFORMATIO
 - QB-TARGET - https://github.com/qbcore-framework/qb-target
 - QB-MENU - https://github.com/qbcore-framework/qb-menu
 - QB-INPUT - https://github.com/qbcore-framework/qb-input
+- QB-INVENTORY - https://github.com/qbcore-framework/qb-inventory
 - PROGRESSBAR - https://github.com/qbcore-framework/progressbar
 - Legacy Fuel - https://github.com/InZidiuZ/LegacyFuel
 
