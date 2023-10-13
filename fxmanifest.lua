@@ -13,14 +13,12 @@ version '1.0.0'
 
 client_scripts {
     'client/diner_client.lua',
-    'client/diner_unlocked_client.lua',
     'shared/menus.lua',
     'shared/targets.lua'
 }
 
 server_scripts {
     'server/diner_server.lua',
-    'server/diner_unlocked_server.lua',
     'shared/billing.lua',
 } 
 

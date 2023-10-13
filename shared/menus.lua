@@ -1,3 +1,5 @@
+local MenuType = Config.CoreSettings.Menu.Type
+
 
 -------------------------------------------------------< SMOOTHIE MENU START >---------------------------------------------------
 local SlushieMenu = {
@@ -174,7 +176,7 @@ lib.registerContext({
 
 
 RegisterNetEvent('lusty94_diner:client:SlushieMenu', function()
-    if Config.CoreSettings.Menu.Type == 'qb' then
+    if MenuType == 'qb' then
         exports['qb-menu']:openMenu({
             {
                 header = "🥤 Prepare Fresh Slushies!",
@@ -236,7 +238,7 @@ RegisterNetEvent('lusty94_diner:client:SlushieMenu', function()
                 }
             },
         })
-    elseif Config.CoreSettings.Menu.Type == 'jixel' then
+    elseif MenuType == 'jixel' then
         exports['jixel-menu']:openMenu({
             {
                 header = "🥤 Prepare Fresh Slushies!",
@@ -292,11 +294,11 @@ RegisterNetEvent('lusty94_diner:client:SlushieMenu', function()
                 }
             },
         })
-    elseif Config.CoreSettings.Menu.Type == 'boii' then
+    elseif MenuType == 'boii' then
         exports['boii_ui']:open_menu('default', SlushieMenu)
-    elseif Config.CoreSettings.Menu.Type == 'ox' then
+    elseif MenuType == 'ox' then
         lib.showContext('SlushieMenu')
-    elseif Config.CoreSettings.Menu.Type == 'custom' then
+    elseif MenuType == 'custom' then
         --insert custom menu code here
     end
 end)
@@ -396,7 +398,7 @@ lib.registerContext({
 
 
 RegisterNetEvent('lusty94_diner:client:HotDrinksMenu', function()
-    if Config.CoreSettings.Menu.Type == 'qb' then
+    if MenuType == 'qb' then
         exports['qb-menu']:openMenu({
             {
                 header = "☕ Prepare Fresh Fruit Smoothies!",
@@ -437,7 +439,7 @@ RegisterNetEvent('lusty94_diner:client:HotDrinksMenu', function()
                 }
             },
         })
-    elseif Config.CoreSettings.Menu.Type == 'jixel' then
+    elseif MenuType == 'jixel' then
         exports['jixel-menu']:openMenu({
             {
                 header = "☕ Prepare Fresh Fruit Smoothies!",
@@ -478,11 +480,11 @@ RegisterNetEvent('lusty94_diner:client:HotDrinksMenu', function()
                 }
             },
         })
-    elseif Config.CoreSettings.Menu.Type == 'boii' then
+    elseif MenuType == 'boii' then
         exports['boii_ui']:open_menu('default', HotDrinksMenu)
-    elseif Config.CoreSettings.Menu.Type == 'ox' then
+    elseif MenuType == 'ox' then
         lib.showContext('HotDrinksMenu')
-    elseif Config.CoreSettings.Menu.Type == 'custom' then
+    elseif MenuType == 'custom' then
         --insert custom menu code here
     end
 end)
@@ -591,7 +593,7 @@ lib.registerContext({
 
 
 RegisterNetEvent('lusty94_diner:client:SoftDrinksMenu', function()
-    if Config.CoreSettings.Menu.Type == 'qb' then
+    if MenuType == 'qb' then
         exports['qb-menu']:openMenu({
             {
                 header = "🥤 Prepare Soft Drinks!",
@@ -639,7 +641,7 @@ RegisterNetEvent('lusty94_diner:client:SoftDrinksMenu', function()
                 }
             },
         })
-    elseif Config.CoreSettings.Menu.Type == 'jixel' then
+    elseif MenuType == 'jixel' then
         exports['jixel-menu']:openMenu({
             {
                 header = "🥤 Prepare Soft Drinks!",
@@ -687,11 +689,11 @@ RegisterNetEvent('lusty94_diner:client:SoftDrinksMenu', function()
                 }
             },
         })
-    elseif Config.CoreSettings.Menu.Type == 'boii' then
+    elseif MenuType == 'boii' then
         exports['boii_ui']:open_menu('default', SoftDrinksMenu)
-    elseif Config.CoreSettings.Menu.Type == 'ox' then
+    elseif MenuType == 'ox' then
         lib.showContext('SoftDrinksMenu')
-    elseif Config.CoreSettings.Menu.Type == 'custom' then
+    elseif MenuType == 'custom' then
         --insert custom menu code here
     end
 end)
@@ -846,7 +848,7 @@ lib.registerContext({
 
 
 RegisterNetEvent('lusty94_diner:client:ChoppingBoardMenu', function()
-    if Config.CoreSettings.Menu.Type == 'qb' then
+    if MenuType == 'qb' then
         exports['qb-menu']:openMenu({
             {
                 header = "🍴 Prepare Fresh Ingredients!",
@@ -909,7 +911,7 @@ RegisterNetEvent('lusty94_diner:client:ChoppingBoardMenu', function()
                 }
             },
         })
-    elseif Config.CoreSettings.Menu.Type == 'jixel' then
+    elseif MenuType == 'jixel' then
         exports['jixel-menu']:openMenu({
             {
                 header = "🍴 Prepare Fresh Ingredients!",
@@ -972,11 +974,11 @@ RegisterNetEvent('lusty94_diner:client:ChoppingBoardMenu', function()
                 }
             }, 
         })
-    elseif Config.CoreSettings.Menu.Type == 'boii' then
+    elseif MenuType == 'boii' then
         exports['boii_ui']:open_menu('default', ChoppingBoardMenu)
-    elseif Config.CoreSettings.Menu.Type == 'ox' then
+    elseif MenuType == 'ox' then
         lib.showContext('ChoppingBoardMenu')
-    elseif Config.CoreSettings.Menu.Type == 'custom' then
+    elseif MenuType == 'custom' then
         --insert custom menu code here
     end
 end)
@@ -1129,7 +1131,7 @@ lib.registerContext({
 
 
 RegisterNetEvent('lusty94_diner:client:SandwichesMenu', function()
-    if Config.CoreSettings.Menu.Type == 'qb' then
+    if MenuType == 'qb' then
         exports['qb-menu']:openMenu({
             {
                 header = "🥪 Prepare Grilled Sandwiches!",
@@ -1185,7 +1187,7 @@ RegisterNetEvent('lusty94_diner:client:SandwichesMenu', function()
                 }
             },
         })
-    elseif Config.CoreSettings.Menu.Type == 'jixel' then
+    elseif MenuType == 'jixel' then
         exports['jixel-menu']:openMenu({
             {
                 header = "🥪 Prepare Grilled Sandwiches!",
@@ -1241,11 +1243,11 @@ RegisterNetEvent('lusty94_diner:client:SandwichesMenu', function()
                 }
             },
         })
-    elseif Config.CoreSettings.Menu.Type == 'boii' then
+    elseif MenuType == 'boii' then
         exports['boii_ui']:open_menu('default', SandwichesMenu)
-    elseif Config.CoreSettings.Menu.Type == 'ox' then
+    elseif MenuType == 'ox' then
         lib.showContext('SandwichesMenu')
-    elseif Config.CoreSettings.Menu.Type == 'custom' then
+    elseif MenuType == 'custom' then
         --insert custom menu code here
     end
 end)
@@ -1311,7 +1313,7 @@ lib.registerContext({
   })
 
 RegisterNetEvent('lusty94_diner:client:OpenGarageMenu', function(data)
-    if Config.CoreSettings.Menu.Type == 'qb' then    
+    if MenuType == 'qb' then    
                 exports['qb-menu']:openMenu({
                     {
                         header = "🚗 Rent A Work Vehicle",
@@ -1339,7 +1341,7 @@ RegisterNetEvent('lusty94_diner:client:OpenGarageMenu', function(data)
                     },
                 })
             
-    elseif Config.CoreSettings.Menu.Type == 'jixel' then      
+    elseif MenuType == 'jixel' then      
             exports['jixel-menu']:openMenu({
                 {
                     header = "🚗 Rent A Work Vehicle",
@@ -1367,11 +1369,11 @@ RegisterNetEvent('lusty94_diner:client:OpenGarageMenu', function(data)
                 },
             })
         
-    elseif Config.CoreSettings.Menu.Type == 'boii'  then
+    elseif MenuType == 'boii'  then
         exports['boii_ui']:open_menu('default', GarageMenu)
-    elseif Config.CoreSettings.Menu.Type == 'ox'then
+    elseif MenuType == 'ox'then
         lib.showContext('GarageMenu')
-    elseif Config.CoreSettings.Menu.Type == 'custom' then
+    elseif MenuType == 'custom' then
         --insert custom menu code here
     end
 end)

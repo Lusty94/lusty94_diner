@@ -1,4 +1,6 @@
-if Config.CoreSettings.Target.Type == 'qb' then
+local TargetType = Config.CoreSettings.Target.Type
+
+if TargetType == 'qb' then
     exports['qb-target']:AddBoxZone("Duty", Config.InteractionLocations.Job.Duty.Location, Config.InteractionLocations.Job.Duty.Width, Config.InteractionLocations.Job.Duty.Height, {
         name = "Duty",
         heading = Config.InteractionLocations.Job.Duty.Heading,
@@ -250,7 +252,7 @@ if Config.CoreSettings.Target.Type == 'qb' then
         },
         distance = 6.0,
     })
-elseif Config.CoreSettings.Target.Type == 'ox' then
+elseif TargetType == 'ox' then
     exports.ox_target:addBoxZone({
         coords = Config.InteractionLocations.Job.Duty.Location,
         size = Config.InteractionLocations.Job.Duty.Size,
@@ -410,7 +412,7 @@ elseif Config.CoreSettings.Target.Type == 'ox' then
             {
                 id = 11,
                 groups = Config.CoreSettings.Job.Name,
-                event = 'lusty94_diner:client:OpenStorageFridge',
+                event = 'lusty94_diner:client:StorageFridge',
                 label = Config.InteractionLocations.Fridge.Label,
                 icon = Config.InteractionLocations.Fridge.Icon,
             }
@@ -459,6 +461,6 @@ elseif Config.CoreSettings.Target.Type == 'ox' then
             }
         }
     })
-elseif Config.CoreSettings.Target.Type == 'custom' then
+elseif TargetType == 'custom' then
 -- inset custom target code here
 end

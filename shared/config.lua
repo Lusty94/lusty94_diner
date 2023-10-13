@@ -16,7 +16,7 @@ Config = {}
 
 
  
-Config.DebugPoly = true
+Config.DebugPoly = false
 --Debugs polyzones and shows green boxes
 
 
@@ -88,7 +88,7 @@ Config.CoreSettings = {
             WashHands = 5000, -- time it takes to wash hands [default is 5000ms so 5 seconds]
             SliceIngredients = 5000, -- time it takes to wash hands [default is 5000ms so 5 seconds]
             PourSoftDrinks = 10000, -- time it takes to prepare soft drinks [default is 10000 MS so 10 seconds]
-            PrepareHotDrinks = 10000,  -- time it takes to prepare hot drinks [default is 10000 MS so 10 seconds]
+            PourHotDrinks = 10000,  -- time it takes to prepare hot drinks [default is 10000 MS so 10 seconds]
             PourSlushies = 10000,  -- time it takes to prepare slushies [default is 10000 MS so 10 seconds]
             CookFoods = 7500,  -- time it takes to cook foods [default is 7500 MS so 7.5 seconds]
         },
