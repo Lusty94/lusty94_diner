@@ -1,4 +1,6 @@
 local TargetType = Config.CoreSettings.Target.Type
+local ShopType = Config.CoreSettings.Shop.Type
+local InvType = Config.CoreSettings.Inventory.Type
 
 if TargetType == 'qb' then
     exports['qb-target']:AddBoxZone("Duty", Config.InteractionLocations.Job.Duty.Location, Config.InteractionLocations.Job.Duty.Width, Config.InteractionLocations.Job.Duty.Height, {
@@ -313,20 +315,24 @@ elseif TargetType == 'ox' then
             }
         }
     })
-    exports.ox_target:addBoxZone({
-        coords = Config.InteractionLocations.CollectionTray.Location,
-        size = Config.InteractionLocations.CollectionTray.Size,
-        rotation = Config.InteractionLocations.CollectionTray.Heading,
-        debug = Config.DebugPoly,
-        options = {
-            {
-                id = 5,
-                event = 'lusty94_diner:client:OpenCollectionTray',
-                label = Config.InteractionLocations.CollectionTray.Label,
-                icon = Config.InteractionLocations.CollectionTray.Icon,
+    if InvType == 'ox' then
+        print('InvType is set to ox - Target options for collection tray disabled and handled via ox_inventory')
+    else
+        exports.ox_target:addBoxZone({
+            coords = Config.InteractionLocations.CollectionTray.Location,
+            size = Config.InteractionLocations.CollectionTray.Size,
+            rotation = Config.InteractionLocations.CollectionTray.Heading,
+            debug = Config.DebugPoly,
+            options = {
+                {
+                    id = 5,
+                    event = 'lusty94_diner:client:OpenCollectionTray',
+                    label = Config.InteractionLocations.CollectionTray.Label,
+                    icon = Config.InteractionLocations.CollectionTray.Icon,
+                }
             }
-        }
-    }) 
+        })
+    end 
     exports.ox_target:addBoxZone({
         coords = Config.InteractionLocations.Grill.Location,
         size = Config.InteractionLocations.Grill.Size,
@@ -403,50 +409,62 @@ elseif TargetType == 'ox' then
             }
         }
     })
-    exports.ox_target:addBoxZone({
-        coords = Config.InteractionLocations.Fridge.Location,
-        size = Config.InteractionLocations.Fridge.Size,
-        rotation = Config.InteractionLocations.Fridge.Heading,
-        debug = Config.DebugPoly,
-        options = {
-            {
-                id = 11,
-                groups = Config.CoreSettings.Job.Name,
-                event = 'lusty94_diner:client:StorageFridge',
-                label = Config.InteractionLocations.Fridge.Label,
-                icon = Config.InteractionLocations.Fridge.Icon,
+    if InvType == 'ox' then
+        print('InvType is set to ox - Target options for storage fridge disabled and handled via ox_inventory')
+    else
+        exports.ox_target:addBoxZone({
+            coords = Config.InteractionLocations.Fridge.Location,
+            size = Config.InteractionLocations.Fridge.Size,
+            rotation = Config.InteractionLocations.Fridge.Heading,
+            debug = Config.DebugPoly,
+            options = {
+                {
+                    id = 11,
+                    groups = Config.CoreSettings.Job.Name,
+                    event = 'lusty94_diner:client:StorageFridge',
+                    label = Config.InteractionLocations.Fridge.Label,
+                    icon = Config.InteractionLocations.Fridge.Icon,
+                }
             }
-        }
-    })
-    exports.ox_target:addBoxZone({
-        coords = Config.InteractionLocations.Ingredients.Location,
-        size = Config.InteractionLocations.Ingredients.Size,
-        rotation = Config.InteractionLocations.Ingredients.Heading,
-        debug = Config.DebugPoly,
-        options = {
-            {
-                id = 12,
-                groups = Config.CoreSettings.Job.Name,
-                event = 'lusty94_diner:client:IngredientsFridge',
-                label = Config.InteractionLocations.Ingredients.Label,
-                icon = Config.InteractionLocations.Ingredients.Icon,
+        })
+    end
+    if ShopType == 'ox' then
+        print('ShopType is set to ox - Target options for ingredients fridge disabled and handled via ox_inventory')
+    else
+        exports.ox_target:addBoxZone({
+            coords = Config.InteractionLocations.Ingredients.Location,
+            size = Config.InteractionLocations.Ingredients.Size,
+            rotation = Config.InteractionLocations.Ingredients.Heading,
+            debug = Config.DebugPoly,
+            options = {
+                {
+                    id = 12,
+                    groups = Config.CoreSettings.Job.Name,
+                    event = 'lusty94_diner:client:IngredientsFridge',
+                    label = Config.InteractionLocations.Ingredients.Label,
+                    icon = Config.InteractionLocations.Ingredients.Icon,
+                }
             }
-        }
-    })
-    exports.ox_target:addBoxZone({
-        coords = Config.InteractionLocations.SnackShelf.Location,
-        size = Config.InteractionLocations.SnackShelf.Size,
-        rotation = Config.InteractionLocations.SnackShelf.Heading,
-        debug = Config.DebugPoly,
-        options = {
-            {
-                id = 13,
-                event = 'lusty94_diner:client:SnackShelf',
-                label = Config.InteractionLocations.SnackShelf.Label,
-                icon = Config.InteractionLocations.SnackShelf.Icon,
+        })
+    end
+    if ShopType == 'ox' then
+        print('ShopType is set to ox - Target options for snack shelf disabled and handled via ox_inventory')
+    else
+        exports.ox_target:addBoxZone({
+            coords = Config.InteractionLocations.SnackShelf.Location,
+            size = Config.InteractionLocations.SnackShelf.Size,
+            rotation = Config.InteractionLocations.SnackShelf.Heading,
+            debug = Config.DebugPoly,
+            options = {
+                {
+                    id = 13,
+                    event = 'lusty94_diner:client:SnackShelf',
+                    label = Config.InteractionLocations.SnackShelf.Label,
+                    icon = Config.InteractionLocations.SnackShelf.Icon,
+                }
             }
-        }
-    })
+        })
+    end
     exports.ox_target:addBoxZone({
         coords = Config.InteractionLocations.Job.Garage.Location,
         size = Config.InteractionLocations.Job.Garage.Size,

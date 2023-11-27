@@ -5,6 +5,7 @@ local FuelScript = Config.CoreSettings.EventNames.Fuel
 local KeysEvent = Config.CoreSettings.EventNames.Keys
 local NotifyType = Config.CoreSettings.Notify.Type
 local ShopType = Config.CoreSettings.Shop.Type
+local InvType = Config.CoreSettings.Inventory.Type
 
 
 -------------------------------------------< BLIP SECTION START >--------------------------------
@@ -2201,6 +2202,8 @@ RegisterNetEvent("lusty94_diner:client:IngredientsFridge", function()
             TriggerServerEvent("inventory:server:OpenInventory", "shop", "Ingredients", Config.InteractionLocations.Ingredients.Items)
         elseif ShopType == 'jim' then
             TriggerServerEvent("jim-shops:ShopOpen", "shop", "Ingredients", Config.InteractionLocations.Ingredients.Items)
+        elseif ShopType == 'ox' then
+            print('ShopType set to ox - Ingredients Fridge now handled via ox_inventory')
         end
     else
         if NotifyType == 'qb' then
@@ -2220,11 +2223,15 @@ end)
 --Storage Fridge
 RegisterNetEvent("lusty94_diner:client:StorageFridge", function()
     if onDuty then
-        TriggerEvent("inventory:client:SetCurrentStash", "PopsDiner_StorageFridge")
-        TriggerServerEvent("inventory:server:OpenInventory", "stash", "PopsDiner_StorageFridge", {
-            maxweight = Config.InteractionLocations.Fridge.StashSize,
-            slots = Config.InteractionLocations.Fridge.StashSlots,
-        })
+        if InvType == 'qb' then
+            TriggerEvent("inventory:client:SetCurrentStash", "PopsDiner_StorageFridge")
+            TriggerServerEvent("inventory:server:OpenInventory", "stash", "PopsDiner_StorageFridge", {
+                maxweight = Config.InteractionLocations.Fridge.StashSize,
+                slots = Config.InteractionLocations.Fridge.StashSlots,
+            })
+        else
+            print('InvType is set to ox - Storage Fridge now handled via ox_inventory')
+        end
     else
         if NotifyType == 'qb' then
             QBCore.Functions.Notify(Config.Language.Notifications.DutyName, "error", Config.CoreSettings.Notify.Length.Error)
@@ -2253,6 +2260,8 @@ AddEventHandler("lusty94_diner:client:SnackShelf", function()
         TriggerServerEvent("inventory:server:OpenInventory", "shop", "SnackShelf", Config.InteractionLocations.SnackShelf.Items)
     elseif ShopType == 'jim' then
         TriggerServerEvent("jim-shops:ShopOpen", "shop", "SnackShelf", Config.InteractionLocations.SnackShelf.Items)
+    elseif ShopType == 'ox' then
+        print('ShopType set to ox - Snack Shelf now handled via ox_inventory')
     end
 end)
 
@@ -2267,11 +2276,15 @@ end)
 ---------------------------------------------------< COLLECTION TRAY SECTION START >----------------------------------------
 
 RegisterNetEvent("lusty94_diner:client:OpenCollectionTray", function()
-    TriggerEvent("inventory:client:SetCurrentStash", "collectiontray_popsdiner")
-    TriggerServerEvent("inventory:server:OpenInventory", "stash", "collectiontray_popsdiner", {
-        maxweight = Config.InteractionLocations.CollectionTray.StashSize,
-        slots = Config.InteractionLocations.CollectionTray.StashSlots,
-    })
+    if InvType == 'qb' then
+        TriggerEvent("inventory:client:SetCurrentStash", "collectiontray_popsdiner")
+        TriggerServerEvent("inventory:server:OpenInventory", "stash", "collectiontray_popsdiner", {
+            maxweight = Config.InteractionLocations.CollectionTray.StashSize,
+            slots = Config.InteractionLocations.CollectionTray.StashSlots,
+        })
+    else
+        print('InvType is set to ox - Collection Tray now handled via ox_inventory')
+    end
 end)
 
 ---------------------------------------------------< COLLECTION TRAY SECTION END >----------------------------------------

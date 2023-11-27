@@ -65,6 +65,17 @@ Config.CoreSettings = {
         --use 'ox' for ox_lib context menu
         --use 'custom' for your own custom menu
     },
+    Inventory = { -- support for qb-inventory and ox_inventory [[ IF USING OX_INVENTORY THEN MAKE SURE YOU ADD THE REQUIRED SNIPPETS IN THE README FILE FOR THE STASHES AND SHOPS TO FUNCTION CORRECTLY ]]
+        Type = 'qb',
+        --use 'qb' for qb-inventory
+        --use 'ox' for ox_inventory
+    },
+    Shop = {
+        Type = 'qb',  -- support for qb-inventory shops, jim- shops and ox_inventory shops [[ IF USING OX_INVENTORY THEN MAKE SURE YOU ADD THE REQUIRED SNIPPETS IN THE README FILE FOR THE STASHES AND SHOPS TO FUNCTION CORRECTLY ]]
+        --use 'qb' for qb-inventory hops
+        --use 'jim' for jim-shops
+        --use 'ox' for ox_inventory shops
+    },
     Sound = {
         UseInteractSound = true, -- set to true to play sound when performing certain actions 
         --[[ REQUIRES INTERACT-SOUND AND MUST BE STARTED BEFORE THIS RESOURCE TO WORK PROPERLY]]
@@ -77,11 +88,6 @@ Config.CoreSettings = {
         PourSoftDrinks = 'fizzydrinksmachine', -- sound to be played when preparing soft drinks
         SliceIngredients = 'sliceingredients', -- sound to be played when cooking food
         CookFoods = 'cooker', -- sound to be played when cooking food
-    },
-    Shop = {
-        Type = 'qb', -- support for qb shops and jim shops
-        --use 'qb' for qb-shops 
-        --use 'jim' for jim-shops
     },
     ProgressBar = {
         Times = {
@@ -113,14 +119,14 @@ Config.InteractionLocations = {
     },
     CollectionTray = {
         Location = vector3(1590.3, 6455.25, 26.19), Height = 0.8, Width = 0.5, Heading = 155.24, MinZ = 26.10, MaxZ = 26.25, Icon = 'fa-solid fa-box-archive', Label = "Open Collection Tray",  Size = vec3(0.5,0.5,0.2),
-        StashSize = 1000000,  
-        StashSlots = 5,       
+        StashSize = 1000000, -- ONLY RELEVANT TO QB-INVENTORY FOR OX_INVENTORY CHANGE THE VALUES IN DATA/STASHES.LUA  
+        StashSlots = 5, -- ONLY RELEVANT TO QB-INVENTORY FOR OX_INVENTORY CHANGE THE VALUES IN DATA/STASHES.LUA      
     },
     Grill = {
-        Location = vector3(1587.93, 6458.92, 26.25), Height = 1.5, Width = 0.5, Heading = 335, MinZ = 26.10, MaxZ = 26.35, Icon = 'fa-solid fa-ice-cream', Label = "Cook Food", Size = vec3(1.5,0.5,0.35),
+        Location = vector3(1587.93, 6458.92, 26.25), Height = 1.5, Width = 0.5, Heading = 335, MinZ = 26.10, MaxZ = 26.35, Icon = 'fa-solid fa-fire', Label = "Cook Food", Size = vec3(1.5,0.5,0.35),
     },
     ChoppingBoard = {
-        Location = vector3(1586.98, 6459.33, 26.25), Height = 0.5, Width = 0.5, Heading = 335, MinZ = 26.10, MaxZ = 26.25, Icon = 'fa-solid fa-ice-cream', Label = "Chop Ingredients", Size = vec3(0.5,0.5,0.25),
+        Location = vector3(1586.98, 6459.33, 26.25), Height = 0.5, Width = 0.5, Heading = 335, MinZ = 26.10, MaxZ = 26.25, Icon = 'fa-solid fa-hand-point-up', Label = "Chop Ingredients", Size = vec3(0.5,0.5,0.25),
     },
     SlushieMachine = {
         Location = vector3(1594.13, 6455.92, 26.40), Height = 0.6, Width = 0.5, Heading = 335, MinZ = 26.10, MaxZ = 26.95, Icon = 'fa-solid fa-blender', Label = "Pour Slushies", Size = vec3(0.6,0.5,0.8),
@@ -133,13 +139,13 @@ Config.InteractionLocations = {
     },
     Fridge = { 
         Location = vector3(1596.07, 6454.55, 26.25), Height = 0.75, Width = 1.0, Heading = 335, MinZ = 25, MaxZ = 27.5, Icon = 'fa-solid fa-box-archive', Label = "Open Storage Fridge", Size = vec3(0.8,1.0,2),
-        StashSize = 10000000,
-        StashSlots = 64,
+        StashSize = 10000000, -- ONLY RELEVANT TO QB-INVENTORY FOR OX_INVENTORY CHANGE THE VALUES IN DATA/STASHES.LUA
+        StashSlots = 64, -- ONLY RELEVANT TO QB-INVENTORY FOR OX_INVENTORY CHANGE THE VALUES IN DATA/STASHES.LUA
     },
     Ingredients = { 
         Location = vector3(1594.76, 6455.54, 25.55), Height = 1.8, Width = 0.8, Heading = 335, MinZ = 25, MaxZ = 26, Icon = 'fa-solid fa-box-archive', Label = "Open Ingredients Cupboard", Size = vec3(1.7,0.8,1),
         -- IF MOVING INGREDIENTS FRIDGE DONT FORGET TO MOVE THE FRIDGE PROP LOCATION TOO
-        Items = {
+        Items = { -- ONLY RELEVANT TO QB-INVENTORY FOR OX_INVENTORY CHANGE THE NAMES / PRICES IN DATA/SHOPS.LUA
             label = "Ingredients Fridge", 
             slots = 21,
             items = {
@@ -169,7 +175,7 @@ Config.InteractionLocations = {
     },
     SnackShelf = {
         Location = vector3(1588.83, 6456.13, 25.7), Height = 1.5, Width = 0.8, Heading = 335, MinZ = 25, MaxZ = 26.0, Icon = 'fa-solid fa-cookie-bite', Label = "Open Snack Shelf", Size = vec3(1.5,0.5,1),
-        Items = {
+        Items = { -- ONLY RELEVANT TO QB-INVENTORY FOR OX_INVENTORY CHANGE THE NAMES / PRICES IN DATA/SHOPS.LUA
             label = "Pops Diner Snacks", 
             slots = 7,
             items = {

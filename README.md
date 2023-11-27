@@ -28,8 +28,9 @@ PLEASE MAKE SURE TO READ THIS ENTIRE FILE AS IT COVERS SOME IMPORTANT INFORMATIO
 
 - Multiple types of notification support [qb-notify, okokNotify, mythic_notify, boii_ui notify, ox_lib notify]
 - Multiple types of menu support [qb-menu, jixel-menu, boii_ui menu, ox_lib menu]
-- Support for qb-shops & jim-shops
+- Support for qb-inventory shops, jim-shops & ox_inventory shops
 - Support for qb-target & ox_target
+- Support for qb-inventory and ox_inventory
 - Support for jim-consumables with different props for each food/drink item
 - Employee stash system [Storage Fridge] and customer collection tray
 
@@ -47,6 +48,114 @@ PLEASE MAKE SURE TO READ THIS ENTIRE FILE AS IT COVERS SOME IMPORTANT INFORMATIO
 - Add the ##JOB snippet below to your core/shared/jobs.lua
 - Add all .png images inside [images] folder into your inventory/html/images folder
 - Add all .ogg files inside [interact-sounds] folder into your interact-sound/client/sounds folder
+
+
+
+## OX INVENTORY USERS - STORAGE FRIDGE, INGREDIENTS FRIDGE, SNACK SHELF & COLLECTION TRAY INFORMATION
+
+- If you are using ox_inventory you must add this snippet below to ox_inventory/data/shops & stashes.lua for the ingredients and snack shelf stores to work correctly. 
+
+``
+
+--SHOPS.LUA--
+
+    PopsDinerIngredients = {
+		name = 'Pops Diner Ingredients',
+		groups = {
+			['diner'] = 0
+		},
+		inventory = {
+			{ name = 'butter', price = 0 },
+			{ name = 'crushedice', price = 0 },
+			{ name = 'balsamicglaze', price = 0 },
+			{ name = 'cranberrysauce', price = 0 },
+			{ name = 'mozzarellacheese', price = 0 },
+			{ name = 'cheeseslice', price = 0 },
+			{ name = 'bread', price = 0 },
+			{ name = 'eggs', price = 0 },
+			{ name = 'chickenbreast', price = 0 },
+			{ name = 'turkey', price = 0 },
+			{ name = 'bacon', price = 0 },
+			{ name = 'tuna', price = 0 },
+			{ name = 'avocado', price = 0 },
+			{ name = 'sweetcorn', price = 0 },
+			{ name = 'blueraspberrysyrup', price = 0 },
+			{ name = 'tropicalsyrup', price = 0 },
+			{ name = 'strawberrysyrup', price = 0 },
+			{ name = 'lemonlimesyrup', price = 0 },
+			{ name = 'orangesyrup', price = 0 },
+			{ name = 'grapesyrup', price = 0 },
+			{ name = 'cherrysyrup', price = 0 },
+		},
+		locations = {
+			vec3(1594.76, 6455.54, 25.0)
+		}, 
+		targets = {
+			{ loc = vec3(1594.76, 6455.54, 25.0), length = 1.8, width = 0.8, heading = 335, minZ = 24.0, maxZ = 26.0, distance = 2 }
+		}
+	},
+
+	PopsDinerSnacks = {
+		name = 'Pops Diner Snack Shelf',
+		inventory = {
+			{ name = 'vanillacupcake', price = 10 },
+			{ name = 'chocolatecupcake', price = 10 },
+			{ name = 'chocolatebar', price = 10 },
+			{ name = 'jamdoughnut', price = 10 },
+			{ name = 'sugardoughnut', price = 10 },
+			{ name = 'custarddoughnut', price = 10 },
+			{ name = 'chocolatedoughnut', price = 10 },
+		},
+		locations = {
+			vec3(1588.83, 6456.13, 25.7)
+		}, 
+		targets = {
+			{ loc = vec3(1588.83, 6456.13, 25.7), length = 1.5, width = 0.8, heading = 335, minZ = 25.0, maxZ = 26.00, distance = 2 }
+		}
+	},
+
+
+
+--STASHES.LUA--
+
+    { -- pops diner collection tray
+		coords = vec3(1590.3, 6455.25, 26.19),
+		target = {
+			loc = vec3(1590.3, 6455.25, 26.19),
+			length = 0.8,
+			width = 0.5,
+			heading = 155.24,
+			minZ = 26.10,
+			maxZ = 26.25,
+			label = 'Open Pops Diner Collection Tray'
+		},
+		name = 'popsdinercollectiontray2',
+		label = 'Pops Diner Collection Tray',
+		owner = false,
+		slots = 10,
+		weight = 100000000,
+	},
+
+	{ -- pops diner storage fridge
+		coords = vec3(1596.07, 6454.55, 25.25),
+		target = {
+			loc = vec3(1596.07, 6454.55, 25.25),
+			length = 0.75,
+			width = 1.0,
+			heading = 335,
+			minZ = 25.0,
+			maxZ = 27.25,
+			label = 'Open Pops Diner Storage Fridge'
+		},
+		name = 'popsdinerstoragefridge',
+		label = 'Pops Diner Storage Fridge',
+		owner = true,
+		slots = 64,
+		weight = 10000000000000,
+		groups = {['diner'] = 0}
+	},
+
+``
 
 
 

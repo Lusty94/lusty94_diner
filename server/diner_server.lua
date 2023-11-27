@@ -1,4 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
+local InvType = Config.CoreSettings.Inventory.Type
+
 
 local function CheckVersion()
 	PerformHttpRequest('https://raw.githubusercontent.com/Lusty94/UpdatedVersions/main/Diner/version.txt', function(err, newestVersion, headers)
@@ -24,43 +26,63 @@ end)
 --Give Slushie Cup
 RegisterNetEvent('lusty94_diner:server:GiveSlushieCup', function(amount)
     local src = source
-    local Player = QBCore.Functions.GetPlayer(src)        
+    local Player = QBCore.Functions.GetPlayer(src)
+    if InvType == 'qb' then        
         Player.Functions.AddItem("slushiecup", amount)
         TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slushiecup"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:AddItem(src,"slushiecup", amount)
+    end
 end)
 
 
 --Give Mug
 RegisterNetEvent('lusty94_diner:server:GiveMug', function(amount)
     local src = source
-    local Player = QBCore.Functions.GetPlayer(src)        
+    local Player = QBCore.Functions.GetPlayer(src)
+    if InvType == 'qb' then        
         Player.Functions.AddItem("mug", amount)
         TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["mug"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:AddItem(src,"mug", amount)
+    end
 end)
 
 
 --Give Soft Drinks Cup
 RegisterNetEvent('lusty94_diner:server:GiveSoftDrinksCup', function(amount)
     local src = source
-    local Player = QBCore.Functions.GetPlayer(src)        
+    local Player = QBCore.Functions.GetPlayer(src)  
+    if InvType == 'qb' then      
         Player.Functions.AddItem("softdrinkscup", amount)
         TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["softdrinkscup"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:AddItem(src,"softdrinkscup", amount)
+    end
 end)
 
 --Give Kitchen Knife
-RegisterNetEvent('lusty94_diner:server:GiveKitchenKnife', function(amount)
+RegisterNetEvent('lusty94_diner:server:GiveKitchenKnife', function()
     local src = source
-    local Player = QBCore.Functions.GetPlayer(src)        
-        Player.Functions.AddItem("kitchenknife", amount)
+    local Player = QBCore.Functions.GetPlayer(src)   
+    if InvType == 'qb' then     
+        Player.Functions.AddItem("kitchenknife", 1)
         TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["kitchenknife"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:AddItem(src,"kitchenknife", 1)
+    end
 end)
 
 --Give Bread Knife
-RegisterNetEvent('lusty94_diner:server:GiveBreadKnife', function(amount)
+RegisterNetEvent('lusty94_diner:server:GiveBreadKnife', function()
     local src = source
-    local Player = QBCore.Functions.GetPlayer(src)        
-        Player.Functions.AddItem("breadknife", amount)
+    local Player = QBCore.Functions.GetPlayer(src) 
+    if InvType == 'qb' then       
+        Player.Functions.AddItem("breadknife", 1)
         TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["breadknife"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:AddItem(src,"breadknife", 1)
+    end
 end)
 
 
@@ -88,36 +110,45 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateTea', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("mug", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["mug"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["mug"], "remove")            
         Player.Functions.AddItem("tea", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["tea"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["tea"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"mug", 1)
+        exports.ox_inventory:AddItem(src,"tea", 1)
+    end
 end)
 
 --Create Coffee
 RegisterNetEvent('lusty94_diner:server:CreateCoffee', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("mug", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["mug"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["mug"], "remove")            
         Player.Functions.AddItem("coffee", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["coffee"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["coffee"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"mug", 1)
+        exports.ox_inventory:AddItem(src,"coffee", 1)
+    end
 end)
 
 --Create Hot Chocolate
 RegisterNetEvent('lusty94_diner:server:CreateHotChocolate', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("mug", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["mug"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["mug"], "remove")            
         Player.Functions.AddItem("hotchocolate", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["hotchocolate"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["hotchocolate"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"mug", 1)
+        exports.ox_inventory:AddItem(src,"hotchocolate", 1)
+    end
 end)
 
 
@@ -149,48 +180,60 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateECola', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("softdrinkscup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["softdrinkscup"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["softdrinkscup"], "remove")            
         Player.Functions.AddItem("ecola", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["ecola"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["ecola"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"softdrinkscup", 1)
+        exports.ox_inventory:AddItem(src,"ecola", 1)
+    end
 end)
 
 --Create ECola Light
 RegisterNetEvent('lusty94_diner:server:CreateEColaLight', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("softdrinkscup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["softdrinkscup"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["softdrinkscup"], "remove")            
         Player.Functions.AddItem("ecolalight", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["ecolalight"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["ecolalight"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"softdrinkscup", 1)
+        exports.ox_inventory:AddItem(src,"ecolalight", 1)
+    end
 end)
 
 --Create Sprunk
 RegisterNetEvent('lusty94_diner:server:CreateSprunk', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("softdrinkscup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["softdrinkscup"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["softdrinkscup"], "remove")            
         Player.Functions.AddItem("sprunk", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["sprunk"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["sprunk"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"softdrinkscup", 1)
+        exports.ox_inventory:AddItem(src,"sprunk", 1)
+    end
 end)
 
 --Create Orange Soda
 RegisterNetEvent('lusty94_diner:server:CreateOrangeSoda', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("softdrinkscup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["softdrinkscup"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["softdrinkscup"], "remove")            
         Player.Functions.AddItem("orangesoda", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["orangesoda"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["orangesoda"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"softdrinkscup", 1)
+        exports.ox_inventory:AddItem(src,"orangesoda", 1)
+    end
 end)
 
 
@@ -224,16 +267,21 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateBlueRaspberrySlushie', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("slushiecup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slushiecup"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slushiecup"], "remove")
         Player.Functions.RemoveItem("blueraspberrysyrup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["blueraspberrysyrup"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["blueraspberrysyrup"], "remove")
         Player.Functions.RemoveItem("crushedice", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["crushedice"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["crushedice"], "remove")            
         Player.Functions.AddItem("blueraspberryslushie", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["blueraspberryslushie"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["blueraspberryslushie"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"slushiecup", 1)
+        exports.ox_inventory:RemoveItem(src,"blueraspberrysyrup", 1)
+        exports.ox_inventory:RemoveItem(src,"crushedice", 1)
+        exports.ox_inventory:AddItem(src,"blueraspberryslushie", 1)
+    end
 end)
 
 
@@ -256,16 +304,21 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateTropicalSlushie', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("slushiecup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slushiecup"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slushiecup"], "remove")
         Player.Functions.RemoveItem("tropicalsyrup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["tropicalsyrup"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["tropicalsyrup"], "remove")
         Player.Functions.RemoveItem("crushedice", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["crushedice"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["crushedice"], "remove")            
         Player.Functions.AddItem("tropicalslushie", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["tropicalslushie"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["tropicalslushie"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"slushiecup", 1)
+        exports.ox_inventory:RemoveItem(src,"tropicalsyrup", 1)
+        exports.ox_inventory:RemoveItem(src,"crushedice", 1)
+        exports.ox_inventory:AddItem(src,"tropicalslushie", 1)
+    end
 end)
 
 
@@ -288,16 +341,21 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateStrawberrySlushie', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("slushiecup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slushiecup"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slushiecup"], "remove")
         Player.Functions.RemoveItem("strawberrysyrup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["strawberrysyrup"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["strawberrysyrup"], "remove")
         Player.Functions.RemoveItem("crushedice", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["crushedice"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["crushedice"], "remove")            
         Player.Functions.AddItem("strawberryslushie", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["strawberryslushie"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["strawberryslushie"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"slushiecup", 1)
+        exports.ox_inventory:RemoveItem(src,"strawberrysyrup", 1)
+        exports.ox_inventory:RemoveItem(src,"crushedice", 1)
+        exports.ox_inventory:AddItem(src,"strawberryslushie", 1)
+    end
 end)
 
 
@@ -320,16 +378,21 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateLemonLimeSlushie', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("slushiecup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slushiecup"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slushiecup"], "remove")
         Player.Functions.RemoveItem("lemonlimesyrup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["lemonlimesyrup"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["lemonlimesyrup"], "remove")
         Player.Functions.RemoveItem("crushedice", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["crushedice"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["crushedice"], "remove")            
         Player.Functions.AddItem("lemonlimeslushie", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["lemonlimeslushie"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["lemonlimeslushie"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"slushiecup", 1)
+        exports.ox_inventory:RemoveItem(src,"lemonlimesyrup", 1)
+        exports.ox_inventory:RemoveItem(src,"crushedice", 1)
+        exports.ox_inventory:AddItem(src,"lemonlimeslushie", 1)
+    end
 end)
 
 
@@ -352,16 +415,21 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateOrangeSlushie', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("slushiecup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slushiecup"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slushiecup"], "remove")
         Player.Functions.RemoveItem("orangesyrup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["orangesyrup"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["orangesyrup"], "remove")
         Player.Functions.RemoveItem("crushedice", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["crushedice"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["crushedice"], "remove")            
         Player.Functions.AddItem("orangeslushie", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["orangeslushie"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["orangeslushie"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"slushiecup", 1)
+        exports.ox_inventory:RemoveItem(src,"orangesyrup", 1)
+        exports.ox_inventory:RemoveItem(src,"crushedice", 1)
+        exports.ox_inventory:AddItem(src,"orangeslushie", 1)
+    end
 end)
 
 
@@ -384,16 +452,21 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateGrapeSlushie', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("slushiecup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slushiecup"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slushiecup"], "remove")
         Player.Functions.RemoveItem("grapesyrup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["grapesyrup"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["grapesyrup"], "remove")
         Player.Functions.RemoveItem("crushedice", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["crushedice"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["crushedice"], "remove")            
         Player.Functions.AddItem("grapeslushie", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["grapeslushie"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["grapeslushie"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"slushiecup", 1)
+        exports.ox_inventory:RemoveItem(src,"grapesyrup", 1)
+        exports.ox_inventory:RemoveItem(src,"crushedice", 1)
+        exports.ox_inventory:AddItem(src,"grapeslushie", 1)
+    end
 end)
 
 
@@ -416,16 +489,21 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateCherrySlushie', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("slushiecup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slushiecup"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slushiecup"], "remove")
         Player.Functions.RemoveItem("cherrysyrup", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["cherrysyrup"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["cherrysyrup"], "remove")
         Player.Functions.RemoveItem("crushedice", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["crushedice"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["crushedice"], "remove")            
         Player.Functions.AddItem("cherryslushie", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["cherryslushie"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["cherryslushie"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"slushiecup", 1)
+        exports.ox_inventory:RemoveItem(src,"cherrysyrup", 1)
+        exports.ox_inventory:RemoveItem(src,"crushedice", 1)
+        exports.ox_inventory:AddItem(src,"cherryslushie", 1)
+    end
 end)
 
 
@@ -468,12 +546,15 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateSlicedBread', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("bread", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["bread"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["bread"], "remove")            
         Player.Functions.AddItem("slicedbread", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbread"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbread"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"bread", 1)
+        exports.ox_inventory:AddItem(src,"slicedbread", 1)
+    end
 end)
 
 --Bacon Callback
@@ -494,12 +575,15 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateSlicedBacon', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("bacon", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["bacon"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["bacon"], "remove")            
         Player.Functions.AddItem("slicedbacon", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbacon"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbacon"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"bacon", 1)
+        exports.ox_inventory:AddItem(src,"slicedbacon", 1)
+    end
 end)
 
 --Tuna Callback
@@ -519,12 +603,15 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateTunaChunks', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("tuna", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["tuna"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["tuna"], "remove")            
         Player.Functions.AddItem("tunachunks", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["tunachunks"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["tunachunks"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"tuna", 1)
+        exports.ox_inventory:AddItem(src,"tunachunks", 1)
+    end
 end)
 
 --Avocado Callback
@@ -544,12 +631,15 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateSlicedAvocado', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("avocado", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["avocado"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["avocado"], "remove")            
         Player.Functions.AddItem("slicedavocado", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedavocado"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedavocado"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"avocado", 1)
+        exports.ox_inventory:AddItem(src,"slicedavocado", 1)
+    end
 end)
 
 --Turkey Callback
@@ -569,12 +659,15 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateTurkeySlices', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("turkey", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["turkey"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["turkey"], "remove")            
         Player.Functions.AddItem("turkeyslices", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["turkeyslices"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["turkeyslices"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"turkey", 1)
+        exports.ox_inventory:AddItem(src,"turkeyslices", 1)
+    end
 end)
 
 
@@ -608,16 +701,21 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateGrilledCheese', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("slicedbread", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbread"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbread"], "remove")
         Player.Functions.RemoveItem("butter", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["butter"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["butter"], "remove")
         Player.Functions.RemoveItem("cheeseslice", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["cheeseslice"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["cheeseslice"], "remove")            
         Player.Functions.AddItem("grilledcheese", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["grilledcheese"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["grilledcheese"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"slicedbread", 2)
+        exports.ox_inventory:RemoveItem(src,"butter", 1)
+        exports.ox_inventory:RemoveItem(src,"cheeseslice", 2)
+        exports.ox_inventory:AddItem(src,"grilledcheese", 1)
+    end
 end)
 
 
@@ -642,20 +740,27 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateChickenMozzarella', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("slicedbread", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbread"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbread"], "remove")
         Player.Functions.RemoveItem("butter", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["butter"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["butter"], "remove")
         Player.Functions.RemoveItem("chickenbreast", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["chickenbreast"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["chickenbreast"], "remove")
         Player.Functions.RemoveItem("mozzarellacheese", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["mozzarellacheese"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["mozzarellacheese"], "remove")
         Player.Functions.RemoveItem("balsamicglaze", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["balsamicglaze"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["balsamicglaze"], "remove")            
         Player.Functions.AddItem("grilledchickenmozzarella", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["grilledchickenmozzarella"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["grilledchickenmozzarella"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"slicedbread", 2)
+        exports.ox_inventory:RemoveItem(src,"butter", 1)
+        exports.ox_inventory:RemoveItem(src,"chickenbreast", 2)
+        exports.ox_inventory:RemoveItem(src,"mozzarellacheese", 2)
+        exports.ox_inventory:RemoveItem(src,"balsamicglaze", 2)
+        exports.ox_inventory:AddItem(src,"grilledchickenmozzarella", 1)
+    end
 end)
 
 
@@ -679,18 +784,24 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateBaconAvocado', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("slicedbread", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbread"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbread"], "remove")
         Player.Functions.RemoveItem("butter", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["butter"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["butter"], "remove")
         Player.Functions.RemoveItem("slicedbacon", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbacon"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbacon"], "remove")
         Player.Functions.RemoveItem("slicedavocado", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedavocado"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedavocado"], "remove")            
         Player.Functions.AddItem("grilledbaconavocado", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["grilledbaconavocado"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["grilledbaconavocado"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"slicedbread", 2)
+        exports.ox_inventory:RemoveItem(src,"butter", 1)
+        exports.ox_inventory:RemoveItem(src,"slicedbacon", 2)
+        exports.ox_inventory:RemoveItem(src,"slicedavocado", 2)
+        exports.ox_inventory:AddItem(src,"grilledbaconavocado", 1)
+    end
 end)
 
 
@@ -714,18 +825,24 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateTunaSweetcorn', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("slicedbread", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbread"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbread"], "remove")
         Player.Functions.RemoveItem("butter", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["butter"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["butter"], "remove")
         Player.Functions.RemoveItem("tunachunks", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["tunachunks"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["tunachunks"], "remove")
         Player.Functions.RemoveItem("sweetcorn", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["sweetcorn"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["sweetcorn"], "remove")            
         Player.Functions.AddItem("grilledtunasweetcorn", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["grilledtunasweetcorn"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["grilledtunasweetcorn"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"slicedbread", 2)
+        exports.ox_inventory:RemoveItem(src,"butter", 1)
+        exports.ox_inventory:RemoveItem(src,"tunachunks", 2)
+        exports.ox_inventory:RemoveItem(src,"sweetcorn", 1)
+        exports.ox_inventory:AddItem(src,"grilledtunasweetcorn", 1)
+    end
 end)
 
 
@@ -749,18 +866,24 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateTurkeyCranberry', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("slicedbread", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbread"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbread"], "remove")
         Player.Functions.RemoveItem("butter", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["butter"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["butter"], "remove")
         Player.Functions.RemoveItem("turkeyslices", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["turkeyslices"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["turkeyslices"], "remove")
         Player.Functions.RemoveItem("cranberrysauce", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["cranberrysauce"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["cranberrysauce"], "remove")            
         Player.Functions.AddItem("grilledturkeycranberry", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["grilledturkeycranberry"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["grilledturkeycranberry"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"slicedbread", 2)
+        exports.ox_inventory:RemoveItem(src,"butter", 1)
+        exports.ox_inventory:RemoveItem(src,"turkeyslices", 2)
+        exports.ox_inventory:RemoveItem(src,"cranberrysauce", 1)
+        exports.ox_inventory:AddItem(src,"grilledturkeycranberry", 1)
+    end
 end)
 
 
@@ -784,18 +907,24 @@ end)
 RegisterNetEvent('lusty94_diner:server:CreateEggsBacon', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
+    if InvType == 'qb' then
         Player.Functions.RemoveItem("slicedbread", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbread"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbread"], "remove")
         Player.Functions.RemoveItem("butter", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["butter"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["butter"], "remove")
         Player.Functions.RemoveItem("eggs", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["eggs"], "remove")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["eggs"], "remove")
         Player.Functions.RemoveItem("slicedbacon", 2)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbacon"], "remove")
-            
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["slicedbacon"], "remove")            
         Player.Functions.AddItem("grilledeggsbacon", 1)
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["grilledeggsbacon"], "add")
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items["grilledeggsbacon"], "add")
+    elseif InvType == 'ox' then
+        exports.ox_inventory:RemoveItem(src,"slicedbread", 2)
+        exports.ox_inventory:RemoveItem(src,"butter", 1)
+        exports.ox_inventory:RemoveItem(src,"eggs", 2)
+        exports.ox_inventory:RemoveItem(src,"slicedbacon", 2)
+        exports.ox_inventory:AddItem(src,"grilledeggsbacon", 1)
+    end
 end)
 
 
