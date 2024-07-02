@@ -16,11 +16,13 @@ Config = {}
 
 
  
-Config.DebugPoly = false
+Config.DebugPoly = true
 --Debugs polyzones and shows green boxes
 
+Config.DevMode = false
+--cancels duty check for events set to false for a live server
 
-Config.UseJimConsumables = true
+Config.UseJimConsumables = false
 --Uses jim-consumables for consuming food / drink items -- IF SET TO FALSE MAKE SURE TO ADD THE ITEM NAMES TO YOUR OWN CONSUMABLES SCRIPT
 
 
@@ -33,11 +35,6 @@ Config.Blips = {
 Config.CoreSettings = {
     Job = {
         Name = 'diner', -- name of job in core/shared/jobs.lua
-    },
-    EventNames = {
-        BossMenu = 'qb-bossmenu:client:OpenMenu', -- NAME OF BOSS MENU EVENT TO OPEN MANAGEMENT MENU
-        Fuel = 'LegacyFuel', -- NAME OF FUEL SCRIPT
-        Keys = 'vehiclekeys:client:SetOwner', -- NAME OF KEYS EVENT TO SET PLAYER AS OWNER WHEN RENTING WORK VEHICLE
     },
     Target = {
         Type = 'qb', -- target script name support for qb-target and ox_target 
@@ -53,8 +50,6 @@ Config.CoreSettings = {
         --use 'mythic' for mythic_notify
         --use 'boii' for boii_ui notify
         --use 'ox' for ox_lib notify
-        Sound = true, -- use sound for OKOK notifications ONLY
-        Length = { Success = 2500, Error = 2500, },
     },    
     Menu = {
         Type = 'qb', -- menu script name, support for qb-menu, jixel-menu, boii_ui menu and ox_lib context menu
@@ -65,13 +60,13 @@ Config.CoreSettings = {
         --use 'ox' for ox_lib context menu
         --use 'custom' for your own custom menu
     },
-    Inventory = { -- support for qb-inventory and ox_inventory [[ IF USING OX_INVENTORY THEN MAKE SURE YOU ADD THE REQUIRED SNIPPETS IN THE README FILE FOR THE STASHES AND SHOPS TO FUNCTION CORRECTLY ]]
+    Inventory = { -- support for qb-inventory and ox_inventory
         Type = 'qb',
         --use 'qb' for qb-inventory
         --use 'ox' for ox_inventory
     },
     Shop = {
-        Type = 'qb',  -- support for qb-inventory shops, jim- shops and ox_inventory shops [[ IF USING OX_INVENTORY THEN MAKE SURE YOU ADD THE REQUIRED SNIPPETS IN THE README FILE FOR THE STASHES AND SHOPS TO FUNCTION CORRECTLY ]]
+        Type = 'qb',  -- support for qb-inventory shops, jim- shops and ox_inventory shops
         --use 'qb' for qb-inventory hops
         --use 'jim' for jim-shops
         --use 'ox' for ox_inventory shops
@@ -87,171 +82,75 @@ Config.CoreSettings = {
         PourHotDrinks = 'hotdrinksmachine', -- sound to be played when preparing hot drinks
         PourSoftDrinks = 'fizzydrinksmachine', -- sound to be played when preparing soft drinks
         SliceIngredients = 'sliceingredients', -- sound to be played when cooking food
-        CookFoods = 'cooker', -- sound to be played when cooking food
+        CookFood = 'cooker', -- sound to be played when cooking food
     },
-    ProgressBar = {
-        Times = {
-            WashHands = 5000, -- time it takes to wash hands [default is 5000ms so 5 seconds]
-            SliceIngredients = 5000, -- time it takes to wash hands [default is 5000ms so 5 seconds]
-            PourSoftDrinks = 10000, -- time it takes to prepare soft drinks [default is 10000 MS so 10 seconds]
-            PourHotDrinks = 10000,  -- time it takes to prepare hot drinks [default is 10000 MS so 10 seconds]
-            PourSlushies = 10000,  -- time it takes to prepare slushies [default is 10000 MS so 10 seconds]
-            CookFoods = 7500,  -- time it takes to cook foods [default is 7500 MS so 7.5 seconds]
-        },
+    Timers = {
+        WashHands = 5000, -- time it takes to wash hands [default is 5000ms so 5 seconds]
+        SliceIngredients = 5000, -- time it takes to wash hands [default is 5000ms so 5 seconds]
+        PourSoftDrinks = 10000, -- time it takes to prepare soft drinks [default is 10000 MS so 10 seconds]
+        PourHotDrinks = 10000,  -- time it takes to prepare hot drinks [default is 10000 MS so 10 seconds]
+        PourSlushies = 10000,  -- time it takes to prepare slushies [default is 10000 MS so 10 seconds]
+        CookFood = 7500,  -- time it takes to cook foods [default is 7500 MS so 7.5 seconds]
+    },
+    Vehicle = {
+        Keys = 'vehiclekeys:client:SetOwner', -- name of keys event
+        SpawnCoords = vector4(1577.63, 6450.48, 24.99, 158.88), -- spawn location
+        Name = 'asbo', -- spawn name
+        Label = 'Asbo', -- label for menus
     },
 }
-
-
 
 Config.InteractionLocations = {
-    Job = {
-        Duty = { Location = vector3(1592.56, 6454.3, 26.15), Height = 0.2, Width = 0.4, Heading = 337.8, MinZ = 26.10, MaxZ = 26.25, Icon = 'fa-solid fa-clipboard-user', Label = "Toggle Duty", Size = vec3(0.2,0.4,0.15), },
-        Garage = { Location = vector3(1579.44, 6453.94, 25), Height = 0.8, Width = 0.8, Heading = 337.8, MinZ = 24, MaxZ = 25.5, Icon = 'fa-solid fa-car', Label = "Rent Work Vehicle", Size = vec3(0.8,0.8,1), },
-        Vehicle = { Name = 'speedo', Plate = 'DINER', SpawnLocation = vector4(1577.63, 6450.48, 24.99, 158.88),},
-        BossMenu = { Location = vector3(1595.17, 6453.0, 26.45), Height = 0.6, Width = 0.3, Heading = 167.4, MinZ = 26.10, MaxZ = 26.65, Icon = 'fa-solid fa-users', Label = "Open Management Menu", Size = vec3(0.6,0.3,0.5), },
-                    -- IF MOVING MANAGEMENT MENU DONT FORGET TO MOVE THE COMPUTER PROP LOCATION TOO
+    JobAreas = {
+        { Name = "dinerpayment",            Location = vector3(1589.16, 6458.18, 26.25),    Width = 0.5,    Height = 0.5,       Heading = 335.0,  MinZ = 26.10,    MaxZ = 26.65,     Icon = 'fa-solid fa-cash-register',    Label = 'Charge Customer',          Job = 'diner',      Size = vec3(0.5,0.5,0.4),    Event = 'lusty94_diner:bill',                      Distance = 2.0,},
+        { Name = "dinercollectiontray",     Location = vector3(1590.3, 6455.25, 26.19),     Width = 0.5,    Height = 0.8,       Heading = 155.24,  MinZ = 26.10,   MaxZ = 26.65,     Icon = 'fa-solid fa-box-archive',      Label = 'Open Collection Tray',     Job = nil,          Size = vec3(0.5,0.5,0.2),    Event = 'lusty94_diner:client:OpenCollectionTray', Distance = 2.0,},
+        { Name = "dinergrill",              Location = vector3(1587.93, 6458.92, 26.25),    Width = 0.5,    Height = 1.5,       Heading = 335.0,  MinZ = 26.10,    MaxZ = 26.65,     Icon = 'fa-solid fa-fire',             Label = 'Cook Food',                Job = 'diner',      Size = vec3(1.5,0.5,0.35),   Event = 'lusty94_diner:client:SandwichesMenu',     Distance = 2.0,},
+        { Name = "dinerchoppingboard",      Location = vector3(1586.98, 6459.33, 26.25),    Width = 0.5,    Height = 0.5,       Heading = 335.0,  MinZ = 26.10,    MaxZ = 26.65,     Icon = 'fa-solid fa-hand-point-up',    Label = 'Chop Ingredients',         Job = 'diner',      Size = vec3(0.5,0.5,0.25),   Event = 'lusty94_diner:client:ChoppingBoardMenu',  Distance = 2.0,},
+        { Name = "dinerslushies",           Location = vector3(1594.13, 6455.92, 26.40),    Width = 0.5,    Height = 0.6,       Heading = 335.0,  MinZ = 26.10,    MaxZ = 26.95,     Icon = 'fa-solid fa-blender',          Label = 'Pour Slushies',            Job = 'diner',      Size = vec3(0.6,0.5,0.8),    Event = 'lusty94_diner:client:SlushieMenu',        Distance = 2.0,},
+        { Name = "dinersoftdrinks",         Location = vector3(1586.08, 6459.68, 26.25),    Width = 0.6,    Height = 1.1,       Heading = 335.0,  MinZ = 26.10,    MaxZ = 27.0,      Icon = 'fa-solid fa-glass-water',      Label = 'Pour Soft Drinks',         Job = 'diner',      Size = vec3(1.1,0.6,1.0),    Event = 'lusty94_diner:client:SoftDrinksMenu',     Distance = 2.0,},
+        { Name = "dinerhotdrinks",          Location = vector3(1592.27, 6456.86, 26.25),    Width = 0.4,    Height = 0.8,       Heading = 335.0,  MinZ = 26.10,    MaxZ = 26.70,     Icon = 'fa-solid fa-mug-hot',          Label = 'Pour Hot Drinks',          Job = 'diner',      Size = vec3(0.95,0.4,1.0),   Event = 'lusty94_diner:client:HotDrinksMenu',      Distance = 2.0,},
+        { Name = "dineringredientsfridge",  Location = vector3(1594.76, 6455.54, 25.55),    Width = 0.8,    Height = 1.8,       Heading = 335.0,  MinZ = 25.0,     MaxZ = 26.0,      Icon = 'fa-solid fa-box-archive',      Label = 'Open Ingredients Fridge',  Job = 'diner',      Size = vec3(1.7,0.8,1.0),    Event = 'lusty94_diner:client:IngredientsFridge',  Distance = 2.0,},
+        { Name = "dinersnacks",             Location = vector3(1588.83, 6456.13, 25.7),     Width = 0.8,    Height = 1.5,       Heading = 335.0,  MinZ = 25.0,     MaxZ = 26.0,      Icon = 'fa-solid fa-cookie-bite',      Label = 'Open Snack Shelf',         Job = nil,          Size = vec3(1.5,0.5,1.0),    Event = 'lusty94_diner:client:SnackShelf',         Distance = 2.0,},
     },
-    WashHands = {
-        Location = vector3(1591.20, 6457.70, 26.05), Height = 0.4, Width = 0.4, Heading = 318.3, MinZ = 26.10, MaxZ = 26.5, CashSymbol = '£', Icon = 'fa-solid fa-hands', Label = "Wash Hands", Size = vec3(0.4,0.4,0.2), 
-    },
-    Payment = {
-        Location = vector3(1589.16, 6458.18, 26.25), Height = 0.5, Width = 0.5, Heading = 335, MinZ = 26.10, MaxZ = 26.5, CashSymbol = '£', Icon = 'fa-solid fa-cash-register', Label = "Charge Customer", Size = vec3(0.5,0.5,0.4), 
-    },
-    CollectionTray = {
-        Location = vector3(1590.3, 6455.25, 26.19), Height = 0.8, Width = 0.5, Heading = 155.24, MinZ = 26.10, MaxZ = 26.25, Icon = 'fa-solid fa-box-archive', Label = "Open Collection Tray",  Size = vec3(0.5,0.5,0.2),
-        StashSize = 1000000, -- ONLY RELEVANT TO QB-INVENTORY FOR OX_INVENTORY CHANGE THE VALUES IN DATA/STASHES.LUA  
-        StashSlots = 5, -- ONLY RELEVANT TO QB-INVENTORY FOR OX_INVENTORY CHANGE THE VALUES IN DATA/STASHES.LUA      
-    },
-    Grill = {
-        Location = vector3(1587.93, 6458.92, 26.25), Height = 1.5, Width = 0.5, Heading = 335, MinZ = 26.10, MaxZ = 26.35, Icon = 'fa-solid fa-fire', Label = "Cook Food", Size = vec3(1.5,0.5,0.35),
-    },
-    ChoppingBoard = {
-        Location = vector3(1586.98, 6459.33, 26.25), Height = 0.5, Width = 0.5, Heading = 335, MinZ = 26.10, MaxZ = 26.25, Icon = 'fa-solid fa-hand-point-up', Label = "Chop Ingredients", Size = vec3(0.5,0.5,0.25),
-    },
-    SlushieMachine = {
-        Location = vector3(1594.13, 6455.92, 26.40), Height = 0.6, Width = 0.5, Heading = 335, MinZ = 26.10, MaxZ = 26.95, Icon = 'fa-solid fa-blender', Label = "Pour Slushies", Size = vec3(0.6,0.5,0.8),
-    },
-    SoftDrinksMachine = {
-        Location = vector3(1586.08, 6459.68, 26.25), Height = 1.1, Width = 0.6, Heading = 335, MinZ = 26.10, MaxZ = 27, Icon = 'fa-solid fa-glass-water', Label = "Pour Soft Drinks", Size = vec3(1.1,0.6,1),
-    },
-    HotDrinksMachine = {
-        Location = vector3(1592.27, 6456.86, 26.25), Height = 0.8, Width = 0.4, Heading = 335, MinZ = 26.10, MaxZ = 26.7, Icon = 'fa-solid fa-mug-hot', Label = "Prepare Hot Drinks", Size = vec3(0.95,0.4,1),
-    },
-    Fridge = { 
-        Location = vector3(1596.07, 6454.55, 26.25), Height = 0.75, Width = 1.0, Heading = 335, MinZ = 25, MaxZ = 27.5, Icon = 'fa-solid fa-box-archive', Label = "Open Storage Fridge", Size = vec3(0.8,1.0,2),
-        StashSize = 10000000, -- ONLY RELEVANT TO QB-INVENTORY FOR OX_INVENTORY CHANGE THE VALUES IN DATA/STASHES.LUA
-        StashSlots = 64, -- ONLY RELEVANT TO QB-INVENTORY FOR OX_INVENTORY CHANGE THE VALUES IN DATA/STASHES.LUA
-    },
-    Ingredients = { 
-        Location = vector3(1594.76, 6455.54, 25.55), Height = 1.8, Width = 0.8, Heading = 335, MinZ = 25, MaxZ = 26, Icon = 'fa-solid fa-box-archive', Label = "Open Ingredients Cupboard", Size = vec3(1.7,0.8,1),
-        -- IF MOVING INGREDIENTS FRIDGE DONT FORGET TO MOVE THE FRIDGE PROP LOCATION TOO
-        Items = { -- ONLY RELEVANT TO QB-INVENTORY FOR OX_INVENTORY CHANGE THE NAMES / PRICES IN DATA/SHOPS.LUA
-            label = "Ingredients Fridge", 
-            slots = 21,
-            items = {
-                [1] = {name = "butter",                 price = 0, amount = 100000, info = {}, type = "item", slot = 1,},
-                [2] = {name = "crushedice",             price = 0, amount = 100000, info = {}, type = "item", slot = 2,},
-                [3] = {name = "balsamicglaze",          price = 0, amount = 100000, info = {}, type = "item", slot = 3,},
-                [4] = {name = "cranberrysauce",         price = 0, amount = 100000, info = {}, type = "item", slot = 4,},
-                [5] = {name = "mozzarellacheese",       price = 0, amount = 100000, info = {}, type = "item", slot = 5,},
-                [6] = {name = "cheeseslice",            price = 0, amount = 100000, info = {}, type = "item", slot = 6,},
-                [7] = {name = "bread",                  price = 0, amount = 100000, info = {}, type = "item", slot = 7,},
-                [8] = {name = "eggs",                   price = 0, amount = 100000, info = {}, type = "item", slot = 8,},
-                [9] = {name = "chickenbreast",          price = 0, amount = 100000, info = {}, type = "item", slot = 9,},
-                [10] = {name = "turkey",                price = 0, amount = 100000, info = {}, type = "item", slot = 10,},
-                [11] = {name = "bacon",                 price = 0, amount = 100000, info = {}, type = "item", slot = 11,},
-                [12] = {name = "tuna",                  price = 0, amount = 100000, info = {}, type = "item", slot = 12,},
-                [13] = {name = "avocado",               price = 0, amount = 100000, info = {}, type = "item", slot = 13,},
-                [14] = {name = "sweetcorn",             price = 0, amount = 100000, info = {}, type = "item", slot = 14,},
-                [15] = {name = "blueraspberrysyrup",    price = 0, amount = 100000, info = {}, type = "item", slot = 15,},
-                [16] = {name = "tropicalsyrup",         price = 0, amount = 100000, info = {}, type = "item", slot = 16,},
-                [17] = {name = "strawberrysyrup",       price = 0, amount = 100000, info = {}, type = "item", slot = 17,},
-                [18] = {name = "lemonlimesyrup",        price = 0, amount = 100000, info = {}, type = "item", slot = 18,},
-                [19] = {name = "orangesyrup",           price = 0, amount = 100000, info = {}, type = "item", slot = 19,},
-                [20] = {name = "grapesyrup",            price = 0, amount = 100000, info = {}, type = "item", slot = 20,},
-                [21] = {name = "cherrysyrup",           price = 0, amount = 100000, info = {}, type = "item", slot = 21,},
-            },
-        },
-    },
-    SnackShelf = {
-        Location = vector3(1588.83, 6456.13, 25.7), Height = 1.5, Width = 0.8, Heading = 335, MinZ = 25, MaxZ = 26.0, Icon = 'fa-solid fa-cookie-bite', Label = "Open Snack Shelf", Size = vec3(1.5,0.5,1),
-        Items = { -- ONLY RELEVANT TO QB-INVENTORY FOR OX_INVENTORY CHANGE THE NAMES / PRICES IN DATA/SHOPS.LUA
-            label = "Pops Diner Snacks", 
-            slots = 7,
-            items = {
-                [1] = {name = "vanillacupcake",     price = 10, amount = 100000, info = {}, type = "item", slot = 1,},
-                [2] = {name = "chocolatecupcake",   price = 10, amount = 100000, info = {}, type = "item", slot = 2,},
-                [3] = {name = "chocolatebar",       price = 10, amount = 100000, info = {}, type = "item", slot = 3,},
-                [4] = {name = "jamdoughnut",        price = 10, amount = 100000, info = {}, type = "item", slot = 4,},
-                [5] = {name = "sugardoughnut",      price = 10, amount = 100000, info = {}, type = "item", slot = 5,},
-                [6] = {name = "custarddoughnut",    price = 10, amount = 100000, info = {}, type = "item", slot = 6,},
-                [7] = {name = "chocolatedoughnut",  price = 10, amount = 100000, info = {}, type = "item", slot = 7,},
-            },
-        },
+    Props = {
+        { Model = 'xm_prop_x17_computer_01',          Coords = vector3(1595.17, 6453.0, 26.15),    Heading = 163.04, Icon = 'fa-solid fa-user',          Label = 'Open Management Menu',     Event = 'qb-bossmenu:client:OpenMenu',             Job = 'diner', Distance = 2.0,},
+        { Model = 'bkr_prop_fakeid_clipboard_01a',    Coords = vector3(1592.56, 6454.3, 26.15),    Heading = 160.28, Icon = 'fa-solid fa-user',          Label = 'Toggle Duty',              Event = 'lusty94_diner:client:ToggleDuty',         Job = 'diner', Distance = 2.0,},
+        { Model = 'prop_fridge_01',                   Coords = vector3(1596.3, 6454.9, 25.0),      Heading = 336.5,  Icon = 'fa-solid fa-hand-point-up', Label = 'Open Storage Fridge',      Event = 'lusty94_diner:client:StorageFridge',      Job = 'diner', Distance = 2.0,},
+        { Model = 'prop_ff_sink_01',                  Coords = vector3(1591.20, 6457.70, 25.93),   Heading = -115.0, Icon = 'fa-solid fa-hand-point-up', Label = 'Wash Hands',               Event = 'lusty94_diner:client:WashHands',          Job = 'diner', Distance = 2.0,},
+        { Model = 'prop_parkingpay',                  Coords = vector3(1579.44, 6453.94, 24.2),    Heading = 336.22, Icon = 'fa-solid fa-hand-point-up', Label = 'Get Work Vehicle',         Event = 'lusty94_diner:client:OpenGarageMenu',     Job = 'diner', Distance = 2.0,},
     },
 }
+
 
 Config.Animations = {
     WashingHands = {
-        AnimDict = "mp_arresting",
-        Anim = "a_uncuff",
-        Flags = 8,
+        dict = "mp_arresting",
+        anim = "a_uncuff",
+        flag = 8,
     },
     PourHotDrinks = {
-        AnimDict = "amb@prop_human_bbq@male@idle_a",
-        Anim = "idle_a",
-        Flags = 41,
+        dict = "amb@prop_human_bbq@male@idle_a",
+        anim = "idle_a",
+        flag = 41,
     },
     PourSoftDrinks = {
-        AnimDict = "amb@prop_human_bbq@male@idle_a",
-        Anim = "idle_a",
-        Flags = 41,
+        dict = "amb@prop_human_bbq@male@idle_a",
+        anim = "idle_a",
+        flag = 41,
     },
     PourSlushies = {
-        AnimDict = "amb@prop_human_bbq@male@idle_a",
-        Anim = "idle_a",
-        Flags = 41,
+        dict = "amb@prop_human_bbq@male@idle_a",
+        anim = "idle_a",
+        flag = 41,
     },
     SliceIngredients = {
-        AnimDict = "amb@prop_human_parking_meter@female@base",
-        Anim = "base_female",
-        Flags = 41,
+        dict = "amb@prop_human_bbq@male@idle_a",
+        anim = "idle_b",
+        flag = 41,
     },
     CookFood = {
-        AnimDict = "amb@prop_human_parking_meter@female@base",
-        Anim = "base_female",
-        Flags = 41,
+        dict = "amb@prop_human_bbq@male@idle_a",
+        anim = "idle_b",
+        flag = 41,
     },
-}
-
-
-Config.Language = {
-    Notifications = {       CancelledLabel = "Action Cancelled!",                       CancelledName = 'Cancelled',    MissingItemsLabel = "Mising Items!", MissingItemsName = "You Are Missing Items, Check The Recipe!", DutyLabel = 'Duty Check!', DutyName = 'You Must Be On Duty To Do This!'},
-    WashHands = {           ProgressBarName = "Washing Hands!",                         NotifyLabel = "Hands Clean!",   NotifyName = "You Washed your Hands!", },
-    Coffee = {              ProgressBarName = "Preparing Coffee!",                      NotifyLabel = "Item Prepared!", NotifyName = "You Prepared A Coffee!", },
-    Tea = {                 ProgressBarName = "Preparing Tea!",                         NotifyLabel = "Item Prepared!", NotifyName = "You Prepared A Tea!", },
-    HotChocolate = {        ProgressBarName = "Preparing Hot Chocolate!",               NotifyLabel = "Item Prepared!", NotifyName = "You Prepared A Hot Chocolate!", },
-    ECola = {               ProgressBarName = "Preparing E-Cola!",                      NotifyLabel = "Item Prepared!", NotifyName = "You Prepared An E-Cola!", },
-    EColaLight = {          ProgressBarName = "Preparing E-Cola Light!",                NotifyLabel = "Item Prepared!", NotifyName = "You Prepared An E-Cola Light!", },
-    Sprunk = {              ProgressBarName = "Preparing Sprunk!",                      NotifyLabel = "Item Prepared!", NotifyName = "You Prepared A Sprunk!", },
-    OrangeSoda = {          ProgressBarName = "Preparing Orange Soda!",                 NotifyLabel = "Item Prepared!", NotifyName = "You Prepared A Orange Soda!", },
-    SlicedBread = {         ProgressBarName = "Slicing Bread!",                         NotifyLabel = "Item Prepared!", NotifyName = "You Sliced Some Bread!", },
-    SlicedBacon = {         ProgressBarName = "Slicing Bacon!",                         NotifyLabel = "Item Prepared!", NotifyName = "You Sliced Some Bacon!", },
-    SlicedAvocado = {       ProgressBarName = "Slicing Avocado!",                       NotifyLabel = "Item Prepared!", NotifyName = "You Sliced Some Avocado!", },
-    TunaChunks = {          ProgressBarName = "Chunking Tuna!",                         NotifyLabel = "Item Prepared!", NotifyName = "You Chunked Some Tuna!", },
-    TurkeySlices = {        ProgressBarName = "Slicing Turkey!",                        NotifyLabel = "Item Prepared!", NotifyName = "You Sliced Some Turkey!", },
-    GrilledCheese = {       ProgressBarName = "Cooking Grilled Cheese Sandwich!",       NotifyLabel = "Item Prepared!", NotifyName = "You Cooked A Grilled Cheese Sandwich!", },
-    ChickenMozzarella = {   ProgressBarName = "Cooking Chicken & Mozzarella Sandwich!", NotifyLabel = "Item Prepared!", NotifyName = "You Cooked A Chicken & Mozzarella Sandwich!", },
-    BaconAvocado = {        ProgressBarName = "Cooking Bacon & Avocado Sandwich!",      NotifyLabel = "Item Prepared!", NotifyName = "You Cooked A Bacon & Avocado Sandwich!", },
-    TunaSweetcorn = {       ProgressBarName = "Cooking Tuna & Sweetcorn Sandwich!",     NotifyLabel = "Item Prepared!", NotifyName = "You Cooked A Tuna & Sweetcorn Sandwich!", },
-    TurkeyCranberry = {     ProgressBarName = "Cooking Turkey & Cranberry Sandwich!",   NotifyLabel = "Item Prepared!", NotifyName = "You Cooked A Turkey & Cranberry Sandwich!", },
-    EggsBacon = {           ProgressBarName = "Cooking Eggs & Bacon Sandwich!",         NotifyLabel = "Item Prepared!", NotifyName = "You Cooked A Eggs & Bacon Sandwich!", },
-    BlueRaspberrySlushie = {ProgressBarName = "Preparing Blue Raspberry Slushie!",      NotifyLabel = "Item Prepared!", NotifyName = "You Prepared A Blue Raspberry Slushie!", },
-    TropicalSlushie = {     ProgressBarName = "Preparing Tropical Slushie!",            NotifyLabel = "Item Prepared!", NotifyName = "You Prepared A Tropical Slushie!", },
-    StrawberrySlushie = {   ProgressBarName = "Preparing Strawberry Slushie!",          NotifyLabel = "Item Prepared!", NotifyName = "You Prepared A Strawberry Slushie!", },
-    LemonLimeSlushie = {    ProgressBarName = "Preparing Lemon N Lime Slushie!",        NotifyLabel = "Item Prepared!", NotifyName = "You Prepared A Lemon N Lime Slushie!", },
-    OrangeSlushie = {       ProgressBarName = "Preparing Orange Slushie!",              NotifyLabel = "Item Prepared!", NotifyName = "You Prepared A Orange Slushie!", },
-    GrapeSlushie = {        ProgressBarName = "Preparing Grape Slushie!",               NotifyLabel = "Item Prepared!", NotifyName = "You Prepared A Grape Slushie!", },
-    CherrySlushie = {       ProgressBarName = "Preparing Cherry Slushie!",              NotifyLabel = "Item Prepared!", NotifyName = "You Prepared A Cherry Slushie!", },
-    
 }

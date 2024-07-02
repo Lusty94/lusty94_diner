@@ -2,97 +2,64 @@ local MenuType = Config.CoreSettings.Menu.Type
 
 
 -------------------------------------------------------< SMOOTHIE MENU START >---------------------------------------------------
-local SlushieMenu = {
-    main_header = { -- Main menu header
-        text = '🥤 Prepare Fresh Slushies!', -- Header text
-    },
-    menu_options = {
-        {
-            header = '🥤 Get Slushie Cup', -- Menu option header if header is being used
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:GiveSlushieCup',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '🫐 Prepare Blue Raspberry Slushie', -- Menu option header if header is being used
-            message = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Blue Raspberry Syrup </br> Slushie Cup",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareBlueRaspberrySlushie',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '🍹 Prepare Tropical Slushie', -- Menu option header if header is being used
-            message = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Tropical Syrup </br> Slushie Cup",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareTropicalSlushie',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '🍓 Prepare Strawberry Slushie', -- Menu option header if header is being used
-            message = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Strawberry Syrup </br> Slushie Cup",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareStrawberrySlushie',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '🍋 Prepare Lemon N Lime Slushie', -- Menu option header if header is being used
-            message = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Lemon N Lime Syrup </br> Slushie Cup",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareLemonLimeSlushie',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '🍊 Prepare Orange Slushie', -- Menu option header if header is being used
-            message = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Orange Syrup </br> Slushie Cup",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareOrangeSlushie',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '🍇 Prepare Grape Slushie', -- Menu option header if header is being used
-            message = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Grape Syrup </br> Slushie Cup",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareGrapeSlushie',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '🍒 Prepare Cherry Slushie', -- Menu option header if header is being used
-            message = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Cherry Syrup </br> Slushie Cup",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareCherrySlushie',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        
-    },
-    menu_buttons = { -- Menu buttons mostly pointless since they work the same as any other options mainly just allows for more customisation over menu templates
-        close = {
-            use = true, -- Toggle the close button
-            --action_type = '', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            --action = '', -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
+local SlushieMenuDiner = {
+    {
+        header = "🥤 Prepare Fresh Slushies!",
+        isMenuHeader = true,
+    },  
+    {   
+        header = "🫐 Prepare Blue Raspberry Slushie",
+        txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Blue Raspberry Syrup </br> Slushie Cup",
+        params = {
+            event = "lusty94_diner:client:PrepareBlueRaspberrySlushie",
+        }
+    },               
+    {   
+        header = "🍹 Prepare Tropical Slushie",
+        txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Tropical Syrup </br> Slushie Cup",
+        params = {
+            event = "lusty94_diner:client:PrepareTropicalSlushie",
+        }
+    },               
+    {   
+        header = "🍓 Prepare Strawberry Slushie",
+        txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Strawberry Syrup </br> Slushie Cup",
+        params = {
+            event = "lusty94_diner:client:PrepareStrawberrySlushie",
+        }
+    },               
+    {   
+        header = "🍋 Prepare Lemon N Lime Slushie",
+        txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Lemon N Lime Syrup </br> Slushie Cup",
+        params = {
+            event = "lusty94_diner:client:PrepareLemonLimeSlushie",
+        }
+    },               
+    {   
+        header = "🍇 Prepare Grape Slushie",
+        txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Grape Syrup </br> Slushie Cup",
+        params = {
+            event = "lusty94_diner:client:PrepareGrapeSlushie",
+        }
+    },               
+    {   
+        header = "🍒 Prepare Cherry Slushie",
+        txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Cherry Syrup </br> Slushie Cup",
+        params = {
+            event = "lusty94_diner:client:PrepareCherrySlushie",
+        }
+    },               
+    {
+        header = "❌ Close",
+        txt = "",
+        params = {
+            event = "qb-menu:closeMenu",
         }
     },
 }
 
 lib.registerContext({
-    id = 'SlushieMenu',
+    id = 'SlushieMenuDiner',
     title = '🥤 Prepare Fresh Slushies!',
     options = {
       {
@@ -177,127 +144,11 @@ lib.registerContext({
 
 RegisterNetEvent('lusty94_diner:client:SlushieMenu', function()
     if MenuType == 'qb' then
-        exports['qb-menu']:openMenu({
-            {
-                header = "🥤 Prepare Fresh Slushies!",
-                isMenuHeader = true,
-            },  
-            {   
-                header = "🥤 Get A Slushie Cup",
-                params = {
-                    event = "lusty94_diner:client:GiveSlushieCup",
-                }
-            },          
-            {   
-                header = "🫐 Prepare Blue Raspberry Slushie",
-                txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Blue Raspberry Syrup </br> Slushie Cup",
-                params = {
-                    event = "lusty94_diner:client:PrepareBlueRaspberrySlushie",
-                }
-            },               
-            {   
-                header = "🍹 Prepare Tropical Slushie",
-                txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Tropical Syrup </br> Slushie Cup",
-                params = {
-                    event = "lusty94_diner:client:PrepareTropicalSlushie",
-                }
-            },               
-            {   
-                header = "🍓 Prepare Strawberry Slushie",
-                txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Strawberry Syrup </br> Slushie Cup",
-                params = {
-                    event = "lusty94_diner:client:PrepareStrawberrySlushie",
-                }
-            },               
-            {   
-                header = "🍋 Prepare Lemon N Lime Slushie",
-                txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Lemon N Lime Syrup </br> Slushie Cup",
-                params = {
-                    event = "lusty94_diner:client:PrepareLemonLimeSlushie",
-                }
-            },               
-            {   
-                header = "🍇 Prepare Grape Slushie",
-                txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Grape Syrup </br> Slushie Cup",
-                params = {
-                    event = "lusty94_diner:client:PrepareGrapeSlushie",
-                }
-            },               
-            {   
-                header = "🍒 Prepare Cherry Slushie",
-                txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Cherry Syrup </br> Slushie Cup",
-                params = {
-                    event = "lusty94_diner:client:PrepareCherrySlushie",
-                }
-            },          
-            {
-                header = "❌ Close",
-                txt = "",
-                params = {
-                    event = "qb-menu:closeMenu",
-                }
-            },
-        })
+        exports['qb-menu']:openMenu(SlushieMenuDiner)
     elseif MenuType == 'jixel' then
-        exports['jixel-menu']:openMenu({
-            {
-                header = "🥤 Prepare Fresh Slushies!",
-                isMenuHeader = true,
-            },  
-            {   
-                header = "🫐 Prepare Blue Raspberry Slushie",
-                txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Blue Raspberry Syrup </br> Slushie Cup",
-                params = {
-                    event = "lusty94_diner:client:PrepareBlueRaspberrySlushie",
-                }
-            },               
-            {   
-                header = "🍹 Prepare Tropical Slushie",
-                txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Tropical Syrup </br> Slushie Cup",
-                params = {
-                    event = "lusty94_diner:client:PrepareTropicalSlushie",
-                }
-            },               
-            {   
-                header = "🍓 Prepare Strawberry Slushie",
-                txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Strawberry Syrup </br> Slushie Cup",
-                params = {
-                    event = "lusty94_diner:client:PrepareStrawberrySlushie",
-                }
-            },               
-            {   
-                header = "🍋 Prepare Lemon N Lime Slushie",
-                txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Lemon N Lime Syrup </br> Slushie Cup",
-                params = {
-                    event = "lusty94_diner:client:PrepareLemonLimeSlushie",
-                }
-            },               
-            {   
-                header = "🍇 Prepare Grape Slushie",
-                txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Grape Syrup </br> Slushie Cup",
-                params = {
-                    event = "lusty94_diner:client:PrepareGrapeSlushie",
-                }
-            },               
-            {   
-                header = "🍒 Prepare Cherry Slushie",
-                txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Cherry Syrup </br> Slushie Cup",
-                params = {
-                    event = "lusty94_diner:client:PrepareCherrySlushie",
-                }
-            },               
-            {
-                header = "❌ Close",
-                txt = "",
-                params = {
-                    event = "jixel-menu:closeMenu",
-                }
-            },
-        })
-    elseif MenuType == 'boii' then
-        exports['boii_ui']:open_menu('default', SlushieMenu)
+        exports['jixel-menu']:openMenu(SlushieMenuDiner)
     elseif MenuType == 'ox' then
-        lib.showContext('SlushieMenu')
+        lib.showContext('SlushieMenuDiner')
     elseif MenuType == 'custom' then
         --insert custom menu code here
     end
@@ -308,65 +159,49 @@ end)
 
 
 -------------------------------------------------------< HOT DRINKS MENU START >---------------------------------------------------
-local HotDrinksMenu = {
-    main_header = { -- Main menu header
-        text = '☕ Prepare Hot Drinks!', -- Header text
-    },
-    menu_options = {
-        {
-            header = '☕ Get A Mug', -- Menu option header if header is being used
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:GiveMug',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '🍵 Prepare Cup of Tea', -- Menu option header if header is being used
-            header_icon = '<i class="fa-solid fa-mug-hot"></i>', -- Menu header icon if using one this can be removed if not
-            message = "Mug Required",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareTea',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '☕ Prepare Cup of Coffee', -- Menu option header if header is being used
-            header_icon = '<i class="fa-solid fa-mug-hot"></i>', -- Menu header icon if using one this can be removed if not
-            message = "Mug Required",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareCoffee',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '🍫 Prepare Cup of Hot Chocolate', -- Menu option header if header is being used
-            header_icon = '<i class="fa-solid fa-mug-hot"></i>', -- Menu header icon if using one this can be removed if not
-            message = "Mug Required",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareHotChocolate',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        
-        
-    },
-    menu_buttons = { -- Menu buttons mostly pointless since they work the same as any other options mainly just allows for more customisation over menu templates
-        close = {
-            use = true, -- Toggle the close button
-            --action_type = '', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            --action = '', -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
+local HotDrinksMenuDiner = {
+    {
+        header = "☕ Prepare Fresh Fruit Smoothies!",
+        isMenuHeader = true,
+    },  
+    {   
+        header = "☕ Get A Mug",
+        params = {
+            event = "lusty94_diner:client:GiveMug",
+        }
+    },          
+    {   
+        header = "🍵 Prepare Cup of Tea",
+        txt = "Mug Required",
+        params = {
+            event = "lusty94_diner:client:PrepareTea",
+        }
+    },       
+    {   
+        header = "☕ Prepare Cup of Coffee",
+        txt = "Mug Required",
+        params = {
+            event = "lusty94_diner:client:PrepareCoffee",
+        }
+    },       
+    {   
+        header = "🍫 Prepare Cup of Hot Chocolate",
+        txt = "Mug Required",
+        params = {
+            event = "lusty94_diner:client:PrepareHotChocolate",
+        }
+    },       
+    {
+        header = "❌ Close",
+        txt = "",
+        params = {
+            event = "qb-menu:closeMenu",
         }
     },
 }
 
 lib.registerContext({
-    id = 'HotDrinksMenu',
+    id = 'HotDrinksMenuDiner',
     title = '☕ Prepare Hot Drinks!',
     options = {
       {
@@ -399,91 +234,11 @@ lib.registerContext({
 
 RegisterNetEvent('lusty94_diner:client:HotDrinksMenu', function()
     if MenuType == 'qb' then
-        exports['qb-menu']:openMenu({
-            {
-                header = "☕ Prepare Fresh Fruit Smoothies!",
-                isMenuHeader = true,
-            },  
-            {   
-                header = "☕ Get A Mug",
-                params = {
-                    event = "lusty94_diner:client:GiveMug",
-                }
-            },          
-            {   
-                header = "🍵 Prepare Cup of Tea",
-                txt = "Mug Required",
-                params = {
-                    event = "lusty94_diner:client:PrepareTea",
-                }
-            },       
-            {   
-                header = "☕ Prepare Cup of Coffee",
-                txt = "Mug Required",
-                params = {
-                    event = "lusty94_diner:client:PrepareCoffee",
-                }
-            },       
-            {   
-                header = "🍫 Prepare Cup of Hot Chocolate",
-                txt = "Mug Required",
-                params = {
-                    event = "lusty94_diner:client:PrepareHotChocolate",
-                }
-            },       
-            {
-                header = "❌ Close",
-                txt = "",
-                params = {
-                    event = "qb-menu:closeMenu",
-                }
-            },
-        })
+        exports['qb-menu']:openMenu(HotDrinksMenuDiner)
     elseif MenuType == 'jixel' then
-        exports['jixel-menu']:openMenu({
-            {
-                header = "☕ Prepare Fresh Fruit Smoothies!",
-                isMenuHeader = true,
-            },  
-            {   
-                header = "☕ Get A Mug",
-                params = {
-                    event = "lusty94_diner:client:GiveMug",
-                }
-            },          
-            {   
-                header = "🍵 Prepare Cup of Tea",
-                txt = "Mug Required",
-                params = {
-                    event = "lusty94_diner:client:PrepareTea",
-                }
-            },       
-            {   
-                header = "☕ Prepare Cup of Coffee",
-                txt = "Mug Required",
-                params = {
-                    event = "lusty94_diner:client:PrepareCoffee",
-                }
-            },       
-            {   
-                header = "🍫 Prepare Cup of Hot Chocolate",
-                txt = "Mug Required",
-                params = {
-                    event = "lusty94_diner:client:PrepareHotChocolate",
-                }
-            }, 
-            {
-                header = "❌ Close",
-                txt = "",
-                params = {
-                    event = "jixel-menu:closeMenu",
-                }
-            },
-        })
-    elseif MenuType == 'boii' then
-        exports['boii_ui']:open_menu('default', HotDrinksMenu)
+        exports['jixel-menu']:openMenu(HotDrinksMenuDiner)
     elseif MenuType == 'ox' then
-        lib.showContext('HotDrinksMenu')
+        lib.showContext('HotDrinksMenuDiner')
     elseif MenuType == 'custom' then
         --insert custom menu code here
     end
@@ -494,69 +249,56 @@ end)
 
 
 -------------------------------------------------------< HOT DRINKS MENU START >---------------------------------------------------
-local SoftDrinksMenu = {
-    main_header = { -- Main menu header
-        text = '🥤 Prepare Soft Drinks!', -- Header text
-    },
-    menu_options = {
-        {
-            header = '🥤 Get A Soft Drinks Cup', -- Menu option header if header is being used
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:GiveSoftDrinksCup',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '🥤 Prepare Cup of E-Cola', -- Menu option header if header is being used
-            message = "Soft Drinks Cup Required",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareECola',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '🥤 Prepare Cup of E-Cola Light', -- Menu option header if header is being used
-            message = "Soft Drinks Cup Required",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareEColaLight',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '🍋 Prepare Cup of Sprunk', -- Menu option header if header is being used
-            message = "Soft Drinks Cup Required",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareSprunk',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '🍊 Prepare Cup of Orange Soda', -- Menu option header if header is being used
-            message = "Soft Drinks Cup Required",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareOrangeSoda',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },       
-    },
-    menu_buttons = { -- Menu buttons mostly pointless since they work the same as any other options mainly just allows for more customisation over menu templates
-        close = {
-            use = true, -- Toggle the close button
-            --action_type = '', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            --action = '', -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
+local SoftDrinksMenuDiner = {
+    {
+        header = "🥤 Prepare Soft Drinks!",
+        isMenuHeader = true,
+    },  
+    {   
+        header = "🥤 Get A Soft Drinks Cup",
+        params = {
+            event = "lusty94_diner:client:GiveSoftDrinksCup",
+        }
+    },          
+    {   
+        header = "🥤 Prepare Cup of E-Cola",
+        txt = "Soft Drinks Cup Required",
+        params = {
+            event = "lusty94_diner:client:PrepareECola",
+        }
+    },       
+    {   
+        header = "🥤 Prepare Cup of E-Cola Light",
+        txt = "Soft Drinks Cup Required",
+        params = {
+            event = "lusty94_diner:client:PrepareEColaLight",
+        }
+    },       
+    {   
+        header = "🍋 Prepare Cup of Sprunk",
+        txt = "Soft Drinks Cup Required",
+        params = {
+            event = "lusty94_diner:client:PrepareSprunk",
+        }
+    },       
+    {   
+        header = "🍊 Prepare Cup of Orange Soda",
+        txt = "Soft Drinks Cup Required",
+        params = {
+            event = "lusty94_diner:client:PrepareOrangeSoda",
+        }
+    },       
+    {
+        header = "❌ Close",
+        txt = "",
+        params = {
+            event = "qb-menu:closeMenu",
         }
     },
 }
 
 lib.registerContext({
-    id = 'SoftDrinksMenu',
+    id = 'SoftDrinksMenuDiner',
     title = '🥤 Prepare Soft Drinks!',
     options = {
       {
@@ -594,105 +336,11 @@ lib.registerContext({
 
 RegisterNetEvent('lusty94_diner:client:SoftDrinksMenu', function()
     if MenuType == 'qb' then
-        exports['qb-menu']:openMenu({
-            {
-                header = "🥤 Prepare Soft Drinks!",
-                isMenuHeader = true,
-            },  
-            {   
-                header = "🥤 Get A Soft Drinks Cup",
-                params = {
-                    event = "lusty94_diner:client:GiveSoftDrinksCup",
-                }
-            },          
-            {   
-                header = "🥤 Prepare Cup of E-Cola",
-                txt = "Soft Drinks Cup Required",
-                params = {
-                    event = "lusty94_diner:client:PrepareECola",
-                }
-            },       
-            {   
-                header = "🥤 Prepare Cup of E-Cola Light",
-                txt = "Soft Drinks Cup Required",
-                params = {
-                    event = "lusty94_diner:client:PrepareEColaLight",
-                }
-            },       
-            {   
-                header = "🍋 Prepare Cup of Sprunk",
-                txt = "Soft Drinks Cup Required",
-                params = {
-                    event = "lusty94_diner:client:PrepareSprunk",
-                }
-            },       
-            {   
-                header = "🍊 Prepare Cup of Orange Soda",
-                txt = "Soft Drinks Cup Required",
-                params = {
-                    event = "lusty94_diner:client:PrepareOrangeSoda",
-                }
-            },       
-            {
-                header = "❌ Close",
-                txt = "",
-                params = {
-                    event = "qb-menu:closeMenu",
-                }
-            },
-        })
+        exports['qb-menu']:openMenu(SoftDrinksMenuDiner)
     elseif MenuType == 'jixel' then
-        exports['jixel-menu']:openMenu({
-            {
-                header = "🥤 Prepare Soft Drinks!",
-                isMenuHeader = true,
-            },  
-            {   
-                header = "🥤 Get A Soft Drinks Cup",
-                params = {
-                    event = "lusty94_diner:client:GiveSoftDrinksCup",
-                }
-            },          
-            {   
-                header = "🥤 Prepare Cup of E-Cola",
-                txt = "Soft Drinks Cup Required",
-                params = {
-                    event = "lusty94_diner:client:PrepareECola",
-                }
-            },       
-            {   
-                header = "🥤 Prepare Cup of E-Cola Light",
-                txt = "Soft Drinks Cup Required",
-                params = {
-                    event = "lusty94_diner:client:PrepareEColaLight",
-                }
-            },       
-            {   
-                header = "🍋 Prepare Cup of Sprunk",
-                txt = "Soft Drinks Cup Required",
-                params = {
-                    event = "lusty94_diner:client:PrepareSprunk",
-                }
-            },       
-            {   
-                header = "🍊 Prepare Cup of Orange Soda",
-                txt = "Soft Drinks Cup Required",
-                params = {
-                    event = "lusty94_diner:client:PrepareOrangeSoda",
-                }
-            },
-            {
-                header = "❌ Close",
-                txt = "",
-                params = {
-                    event = "jixel-menu:closeMenu",
-                }
-            },
-        })
-    elseif MenuType == 'boii' then
-        exports['boii_ui']:open_menu('default', SoftDrinksMenu)
+        exports['jixel-menu']:openMenu(SoftDrinksMenuDiner)
     elseif MenuType == 'ox' then
-        lib.showContext('SoftDrinksMenu')
+        lib.showContext('SoftDrinksMenuDiner')
     elseif MenuType == 'custom' then
         --insert custom menu code here
     end
@@ -702,86 +350,71 @@ end)
 
 
 -------------------------------------------------------< HOT DRINKS MENU START >---------------------------------------------------
-local ChoppingBoardMenu = {
-    main_header = { -- Main menu header
-        text = '🍴 Prepare Fresh Ingredients!', -- Header text
+local ChoppingBoardMenuDiner = {
+    {
+        header = "🍴 Prepare Fresh Ingredients!",
+        isMenuHeader = true,
+    },          
+    {   
+        header = "🔪 Get Kitchen Knife",
+        params = {
+            isServer = true,
+            event = "lusty94_diner:server:GiveKitchenKnife",
+        }
+    },          
+    {   
+        header = "🗡 Get Bread Knife",
+        params = {
+            isServer = true,
+            event = "lusty94_diner:server:GiveBreadKnife",
+        }
+    },          
+    {   
+        header = "🍞 Prepare Sliced Bread",
+        txt = "<u>Kitchen Knife Required</u> </br> Bread Required: 1",
+        params = {
+            event = "lusty94_diner:client:PrepareSlicedBread",
+        }
     },
-    menu_options = {
-        {
-            header = '🔪 Get Kitchen Knife', -- Menu option header if header is being used
-            action_type = 'server_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:server:GiveKitchenKnife',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '🗡 Get Bread Knife', -- Menu option header if header is being used
-            action_type = 'server_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:server:GiveBreadKnife',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '🍞 Prepare Sliced Bread', -- Menu option header if header is being used
-            message = "<u>Bread Knife Required:</u> </br> Bread Required: 1",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareSlicedBread',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },      
-        {
-            header = '🥓 Prepare Sliced Bacon', -- Menu option header if header is being used
-            message = "<u>Kitchen Knife Required:</u> </br> Bacon Required: 1",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareSlicedBacon',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },      
-        {
-            header = '🐟 Prepare Tuna Chunks', -- Menu option header if header is being used
-            message = "<u>Kitchen Knife Required:</u> </br> Tuna Required: 1",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareTunaChunks',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },      
-        {
-            header = '🥑 Prepare Sliced Avocado', -- Menu option header if header is being used
-            message = "<u>Kitchen Knife Required:</u> </br> Avocado Required: 1",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareTunaChunks',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },      
-        {
-            header = '🦃 Prepare Turkey Slices', -- Menu option header if header is being used
-            message = "<u>Kitchen Knife Required:</u> </br> Turkey Required: 1",
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:PrepareTurkeySlices',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },      
+    {   
+        header = "🥓 Prepare Sliced Bacon",
+        txt = "<u>Kitchen Knife Required</u> </br> Bacon Required: 1",
+        params = {
+            event = "lusty94_diner:client:PrepareSlicedBacon",
+        }
     },
-    menu_buttons = { -- Menu buttons mostly pointless since they work the same as any other options mainly just allows for more customisation over menu templates
-        close = {
-            use = true, -- Toggle the close button
-            --action_type = '', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            --action = '', -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
+    {   
+        header = "🐟 Prepare Tuna Chunks",
+        txt = "<u>Kitchen Knife Required</u> </br> Tuna Required: 1",
+        params = {
+            event = "lusty94_diner:client:PrepareTunaChunks",
+        }
+    },
+    {   
+        header = "🥑 Prepare Sliced Avocado",
+        txt = "<u>Kitchen Knife Required</u> </br> Avocado Required: 1",
+        params = {
+            event = "lusty94_diner:client:PrepareSlicedAvocado",
+        }
+    },
+    {   
+        header = "🦃 Prepare Turkey Slices",
+        txt = "<u>Kitchen Knife Required</u> </br> Turkey Required: 1",
+        params = {
+            event = "lusty94_diner:client:PrepareTurkeySlices",
+        }
+    },
+    {
+        header = "❌ Close",
+        txt = "",
+        params = {
+            event = "qb-menu:closeMenu",
         }
     },
 }
 
 lib.registerContext({
-    id = 'ChoppingBoardMenu',
+    id = 'ChoppingBoardMenuDiner',
     title = '🍴 Prepare Fresh Ingredients!',
     options = {
        {
@@ -849,135 +482,11 @@ lib.registerContext({
 
 RegisterNetEvent('lusty94_diner:client:ChoppingBoardMenu', function()
     if MenuType == 'qb' then
-        exports['qb-menu']:openMenu({
-            {
-                header = "🍴 Prepare Fresh Ingredients!",
-                isMenuHeader = true,
-            },          
-            {   
-                header = "🔪 Get Kitchen Knife",
-                params = {
-                    isServer = true,
-                    event = "lusty94_diner:server:GiveKitchenKnife",
-                }
-            },          
-            {   
-                header = "🗡 Get Bread Knife",
-                params = {
-                    isServer = true,
-                    event = "lusty94_diner:server:GiveBreadKnife",
-                }
-            },          
-            {   
-                header = "🍞 Prepare Sliced Bread",
-                txt = "<u>Kitchen Knife Required</u> </br> Bread Required: 1",
-                params = {
-                    event = "lusty94_diner:client:PrepareSlicedBread",
-                }
-            },
-            {   
-                header = "🥓 Prepare Sliced Bacon",
-                txt = "<u>Kitchen Knife Required</u> </br> Bacon Required: 1",
-                params = {
-                    event = "lusty94_diner:client:PrepareSlicedBacon",
-                }
-            },
-            {   
-                header = "🐟 Prepare Tuna Chunks",
-                txt = "<u>Kitchen Knife Required</u> </br> Tuna Required: 1",
-                params = {
-                    event = "lusty94_diner:client:PrepareTunaChunks",
-                }
-            },
-            {   
-                header = "🥑 Prepare Sliced Avocado",
-                txt = "<u>Kitchen Knife Required</u> </br> Avocado Required: 1",
-                params = {
-                    event = "lusty94_diner:client:PrepareSlicedAvocado",
-                }
-            },
-            {   
-                header = "🦃 Prepare Turkey Slices",
-                txt = "<u>Kitchen Knife Required</u> </br> Turkey Required: 1",
-                params = {
-                    event = "lusty94_diner:client:PrepareTurkeySlices",
-                }
-            },
-            {
-                header = "❌ Close",
-                txt = "",
-                params = {
-                    event = "qb-menu:closeMenu",
-                }
-            },
-        })
+        exports['qb-menu']:openMenu(ChoppingBoardMenuDiner)
     elseif MenuType == 'jixel' then
-        exports['jixel-menu']:openMenu({
-            {
-                header = "🍴 Prepare Fresh Ingredients!",
-                isMenuHeader = true,
-            },          
-            {   
-                header = "🔪 Get Kitchen Knife",
-                params = {
-                    isServer = true,
-                    event = "lusty94_diner:server:GiveKitchenKnife",
-                }
-            },          
-            {   
-                header = "🗡 Get Bread Knife",
-                params = {
-                    isServer = true,
-                    event = "lusty94_diner:server:GiveBreadKnife",
-                }
-            },          
-            {   
-                header = "🍞 Prepare Sliced Bread",
-                txt = "<u>Kitchen Knife Required</u>",
-                params = {
-                    event = "lusty94_diner:client:PrepareSlicedBread",
-                }
-            },
-            {   
-                header = "🥓 Prepare Sliced Bacon",
-                txt = "<u>Kitchen Knife Required</u>",
-                params = {
-                    event = "lusty94_diner:client:PrepareSlicedBacon",
-                }
-            },
-            {   
-                header = "🐟 Prepare Tuna Chunks",
-                txt = "<u>Kitchen Knife Required</u>",
-                params = {
-                    event = "lusty94_diner:client:PrepareTunaChunks",
-                }
-            },
-            {   
-                header = "🥑 Prepare Sliced Avocado",
-                txt = "<u>Kitchen Knife Required</u>",
-                params = {
-                    event = "lusty94_diner:client:PrepareSlicedAvocado",
-                }
-            },
-            {   
-                header = "🦃 Prepare Turkey Slices",
-                txt = "<u>Kitchen Knife Required</u> </br> Turkey Required: 1",
-                params = {
-                    event = "lusty94_diner:client:PrepareTurkeySlices",
-                }
-            },
-            {
-                header = "❌ Close",
-                txt = "",
-                params = {
-                    event = "jixel-menu:closeMenu",
-                }
-            }, 
-        })
-    elseif MenuType == 'boii' then
-        exports['boii_ui']:open_menu('default', ChoppingBoardMenu)
+        exports['jixel-menu']:openMenu(ChoppingBoardMenuDiner)
     elseif MenuType == 'ox' then
-        lib.showContext('ChoppingBoardMenu')
+        lib.showContext('ChoppingBoardMenuDiner')
     elseif MenuType == 'custom' then
         --insert custom menu code here
     end
@@ -987,77 +496,64 @@ end)
 
 
 -------------------------------------------------------< HOT DRINKS MENU START >---------------------------------------------------
-local SandwichesMenu = {
-    main_header = { -- Main menu header
-        text = '🥪 Prepare Grilled Sandwiches!',
+local SandwichesMenuDiner = {
+    {
+        header = "🥪 Prepare Grilled Sandwiches!",
+        isMenuHeader = true,
+    },          
+    {   
+        header = "🧀 Prepare Grilled Cheese",
+        txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Cheese Slices",
+        params = {
+            event = "lusty94_diner:client:PrepareGrilledCheese",
+        }
     },
-    menu_options = {
-        {
-            header = '🧀 Prepare Grilled Cheese',
-            message = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Cheese Slices",
-            action_type = 'client_event',
-            action = 'lusty94_diner:client:PrepareGrilledCheese',
-            params = {},
-            should_close = true,
-            disabled = false
-        },      
-        {
-            header = '🐔🧀 Prepare Chicken & Mozzarella',
-            message = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Chicken Breast <p> 2x Mozzarella Cheese <p> 1x Balsamic Glaze",
-            action_type = 'client_event',
-            action = 'lusty94_diner:client:PrepareChickenMozzarella',
-            params = {},
-            should_close = true,
-            disabled = false
-        },      
-        {
-            header = '🥓🥑 Prepare Bacon & Avocado',
-            message = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Sliced Bacon <p> 2x Sliced Avocado",
-            action_type = 'client_event',
-            action = 'lusty94_diner:client:PrepareBaconAvocado',
-            params = {},
-            should_close = true,
-            disabled = false
-        },      
-        {
-            header = '🐟🌽 Prepare Tuna & Sweetcorn',
-            message = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Tuna Chunks <p> 1x Sweetcorn",
-            action_type = 'client_event',
-            action = 'lusty94_diner:client:PrepareTunaSweetcorn',
-            params = {},
-            should_close = true,
-            disabled = false
-        },      
-        {
-            header = '🦃🍒 Prepare Turkey & Cranberry',
-            message = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Turkey Slices <p> 1x Cranberry Sauce",
-            action_type = 'client_event',
-            action = 'lusty94_diner:client:PrepareTurkeyCranberry',
-            params = {},
-            should_close = true,
-            disabled = false
-        },      
-        {
-            header = '🥚🥓 Prepare Eggs & Bacon',
-            message = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Egg <p> 2x Sliced Bacon",
-            action_type = 'client_event',
-            action = 'lusty94_diner:client:PrepareEggsBacon',
-            params = {},
-            should_close = true,
-            disabled = false
-        },      
+    {   
+        header = "🐔🧀 Prepare Chicken & Mozzarella",
+        txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Chicken Breast <p> 2x Mozzarella Cheese <p> 1x Balsamic Glaze",
+        params = {
+            event = "lusty94_diner:client:PrepareChickenMozzarella",
+        }
     },
-    menu_buttons = {
-        close = {
-            use = true,
-            params = {}, 
-            should_close = true,
+    {   
+        header = "🥓🥑 Prepare Bacon & Avocado",
+        txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Sliced Bacon <p> 2x Sliced Avocado",
+        params = {
+            event = "lusty94_diner:client:PrepareBaconAvocado",
+        }
+    },
+    {   
+        header = "🐟🌽 Prepare Tuna & Sweetcorn",
+        txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Tuna Chunks <p> 1x Sweetcorn",
+        params = {
+            event = "lusty94_diner:client:PrepareTunaSweetcorn",
+        }
+    },
+    {   
+        header = "🦃🍒 Prepare Turkey & Cranberry",
+        txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Turkey Slices <p> 1x Cranberry Sauce",
+        params = {
+            event = "lusty94_diner:client:PrepareTurkeyCranberry",
+        }
+    },
+    {   
+        header = "🥚🥓 Prepare Eggs & Bacon",
+        txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Egg <p> 2x Sliced Bacon",
+        params = {
+            event = "lusty94_diner:client:PrepareEggsBacon",
+        }
+    },
+    {
+        header = "❌ Close",
+        txt = "",
+        params = {
+            event = "qb-menu:closeMenu",
         }
     },
 }
 
 lib.registerContext({
-    id = 'SandwichesMenu',
+    id = 'SandwichesMenuDiner',
     title = '🥪 Prepare Grilled Sandwiches!',
     options = {
       {
@@ -1132,121 +628,11 @@ lib.registerContext({
 
 RegisterNetEvent('lusty94_diner:client:SandwichesMenu', function()
     if MenuType == 'qb' then
-        exports['qb-menu']:openMenu({
-            {
-                header = "🥪 Prepare Grilled Sandwiches!",
-                isMenuHeader = true,
-            },          
-            {   
-                header = "🧀 Prepare Grilled Cheese",
-                txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Cheese Slices",
-                params = {
-                    event = "lusty94_diner:client:PrepareGrilledCheese",
-                }
-            },
-            {   
-                header = "🐔🧀 Prepare Chicken & Mozzarella",
-                txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Chicken Breast <p> 2x Mozzarella Cheese <p> 1x Balsamic Glaze",
-                params = {
-                    event = "lusty94_diner:client:PrepareChickenMozzarella",
-                }
-            },
-            {   
-                header = "🥓🥑 Prepare Bacon & Avocado",
-                txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Sliced Bacon <p> 2x Sliced Avocado",
-                params = {
-                    event = "lusty94_diner:client:PrepareBaconAvocado",
-                }
-            },
-            {   
-                header = "🐟🌽 Prepare Tuna & Sweetcorn",
-                txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Tuna Chunks <p> 1x Sweetcorn",
-                params = {
-                    event = "lusty94_diner:client:PrepareTunaSweetcorn",
-                }
-            },
-            {   
-                header = "🦃🍒 Prepare Turkey & Cranberry",
-                txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Turkey Slices <p> 1x Cranberry Sauce",
-                params = {
-                    event = "lusty94_diner:client:PrepareTurkeyCranberry",
-                }
-            },
-            {   
-                header = "🥚🥓 Prepare Eggs & Bacon",
-                txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Egg <p> 2x Sliced Bacon",
-                params = {
-                    event = "lusty94_diner:client:PrepareEggsBacon",
-                }
-            },
-            {
-                header = "❌ Close",
-                txt = "",
-                params = {
-                    event = "qb-menu:closeMenu",
-                }
-            },
-        })
+        exports['qb-menu']:openMenu(SandwichesMenuDiner)
     elseif MenuType == 'jixel' then
-        exports['jixel-menu']:openMenu({
-            {
-                header = "🥪 Prepare Grilled Sandwiches!",
-                isMenuHeader = true,
-            },          
-            {   
-                header = "🧀 Prepare Grilled Cheese",
-                txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Cheese Slices",
-                params = {
-                    event = "lusty94_diner:client:PrepareGrilledCheese",
-                }
-            },
-            {   
-                header = "🐔🧀 Prepare Chicken & Mozzarella",
-                txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Chicken Breast <p> 2x Mozzarella Cheese <p> 1x Balsamic Glaze",
-                params = {
-                    event = "lusty94_diner:client:PrepareChickenMozzarella",
-                }
-            },
-            {   
-                header = "🥓🥑 Prepare Bacon & Avocado",
-                txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Sliced Bacon <p> 2x Sliced Avocado",
-                params = {
-                    event = "lusty94_diner:client:PrepareBaconAvocado",
-                }
-            },
-            {   
-                header = "🐟🌽 Prepare Tuna & Sweetcorn",
-                txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Tuna Chunks <p> 1x Sweetcorn",
-                params = {
-                    event = "lusty94_diner:client:PrepareTunaSweetcorn",
-                }
-            },
-            {   
-                header = "🦃🍒 Prepare Turkey & Cranberry",
-                txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Turkey Slices <p> 1x Cranberry Sauce",
-                params = {
-                    event = "lusty94_diner:client:PrepareTurkeyCranberry",
-                }
-            },
-            {   
-                header = "🥚🥓 Prepare Eggs & Bacon",
-                txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Egg <p> 2x Sliced Bacon",
-                params = {
-                    event = "lusty94_diner:client:PrepareEggsBacon",
-                }
-            },
-            {
-                header = "❌ Close",
-                txt = "",
-                params = {
-                    event = "jixel-menu:closeMenu",
-                }
-            },
-        })
-    elseif MenuType == 'boii' then
-        exports['boii_ui']:open_menu('default', SandwichesMenu)
+        exports['jixel-menu']:openMenu(SandwichesMenuDiner)
     elseif MenuType == 'ox' then
-        lib.showContext('SandwichesMenu')
+        lib.showContext('SandwichesMenuDiner')
     elseif MenuType == 'custom' then
         --insert custom menu code here
     end
@@ -1257,50 +643,41 @@ end)
 
 
 -------------------------------------------------------------< VEHICLE GARAGE START >---------------------------------------------------------------------
-
-local GarageMenu = {
-    main_header = { -- Main menu header
-        text = '🚗 Rent A Work Vehicle', -- Header text
-    },
-    menu_options = {
-        {
-            header = '🚗 Rent Vehicle', -- Menu option header if header is being used            
-            message = 'Vehicles Available To Rent: '..Config.InteractionLocations.Job.Vehicle.Name, -- Menu option text if text is being used
-            message_icon = '', -- Menu header icon if using one this can be removed if not
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:RentVehicle',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-        {
-            header = '⬅️ Return Vehicle', -- Menu option header if header is being used
-            message = 'Return Your Vehicle', -- Menu option text if text is being used
-            action_type = 'client_event', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = 'lusty94_diner:client:ReturnVehicle',  -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
-            disabled = false -- Disable the onclick function of the option
-        },
-    },
-    menu_buttons = { -- Menu buttons mostly pointless since they work the same as any other options mainly just allows for more customisation over menu templates
-        close = {
-            use = true, -- Toggle the close button
-            action_type = '', -- Type to trigger on click this can be removed. Actions: 'client_event', 'server_event'
-            action = '', -- Name of event to trigger
-            params = {}, -- Event params
-            should_close = true, -- Toggle whether event should close the menu ui
+local vehicleAvailable = Config.CoreSettings.Vehicle.Label
+local GarageMenuDiner = {
+    {
+        header = "🚗 Rent A Work Vehicle",
+        isMenuHeader = true,
+    },  
+    {   
+        header = "🚗 Rent Vehicle",
+        txt = "<br> Vehicle Available: "..vehicleAvailable,
+        params = {
+            event = "lusty94_diner:client:RentVehicle",
+        }
+    },                  
+    {   
+        header = "⬅️ Return Vehicle",
+        params = {
+            event = "lusty94_diner:client:ReturnVehicle",
+        }
+    },           
+    {
+        header = "❌ Close",
+        txt = "",
+        params = {
+            event = "qb-menu:closeMenu",
         }
     },
 }
 
 lib.registerContext({
-    id = 'GarageMenu',
+    id = 'GarageMenuDiner',
     title = '🚗 Rent A Work Vehicle',
     options = {
       {
         title = '🚗 Rent Vehicle',
-        description = 'Vehicle Available: '..Config.InteractionLocations.Job.Vehicle.Name,
+        description = 'Vehicle Available: '..vehicleAvailable,
         event = 'lusty94_diner:client:RentVehicle',
         arrow = true,
       },
@@ -1314,65 +691,11 @@ lib.registerContext({
 
 RegisterNetEvent('lusty94_diner:client:OpenGarageMenu', function(data)
     if MenuType == 'qb' then    
-                exports['qb-menu']:openMenu({
-                    {
-                        header = "🚗 Rent A Work Vehicle",
-                        isMenuHeader = true,
-                    },  
-                    {   
-                        header = "🚗 Rent Vehicle",
-                        txt = "<br> Vehicle Available: "..Config.InteractionLocations.Job.Vehicle.Name,
-                        params = {
-                            event = "lusty94_diner:client:RentVehicle",
-                        }
-                    },                  
-                    {   
-                        header = "⬅️ Return Vehicle",
-                        params = {
-                            event = "lusty94_diner:client:ReturnVehicle",
-                        }
-                    },           
-                    {
-                        header = "❌ Close",
-                        txt = "",
-                        params = {
-                            event = "qb-menu:closeMenu",
-                        }
-                    },
-                })
-            
+        exports['qb-menu']:openMenu(GarageMenuDiner)            
     elseif MenuType == 'jixel' then      
-            exports['jixel-menu']:openMenu({
-                {
-                    header = "🚗 Rent A Work Vehicle",
-                    isMenuHeader = true,
-                },  
-                {  
-                    header = "🚗 Rent Vehicle",
-                    txt = "<br> Vehicle Available: "..Config.InteractionLocations.Job.Vehicle.Name,
-                    params = {
-                        event = "lusty94_diner:client:RentVehicle",
-                    }
-                },                  
-                {   
-                    header = "⬅️ Return Vehicle",
-                    params = {
-                        event = "lusty94_diner:client:ReturnVehicle",
-                    }
-                },                                   
-                {
-                    header = "❌ Close",
-                    txt = "",
-                    params = {
-                        event = "",
-                    }
-                },
-            })
-        
-    elseif MenuType == 'boii'  then
-        exports['boii_ui']:open_menu('default', GarageMenu)
+        exports['jixel-menu']:openMenu(GarageMenuDiner)
     elseif MenuType == 'ox'then
-        lib.showContext('GarageMenu')
+        lib.showContext('GarageMenuDiner')
     elseif MenuType == 'custom' then
         --insert custom menu code here
     end
