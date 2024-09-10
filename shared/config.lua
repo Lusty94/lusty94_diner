@@ -16,10 +16,10 @@ Config = {}
 
 
  
-Config.DebugPoly = true
+Config.DebugPoly = false
 --Debugs polyzones and shows green boxes
 
-Config.DevMode = true
+Config.DevMode = false
 --cancels duty check for events set to false for a live server
 
 Config.UseJimConsumables = false
