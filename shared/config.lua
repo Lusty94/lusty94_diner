@@ -19,7 +19,7 @@ Config = {}
 Config.DebugPoly = true
 --Debugs polyzones and shows green boxes
 
-Config.DevMode = false
+Config.DevMode = true
 --cancels duty check for events set to false for a live server
 
 Config.UseJimConsumables = false
@@ -28,7 +28,14 @@ Config.UseJimConsumables = false
 
 --Blip Settings
 Config.Blips = {
-    {title = 'Pops Diner', colour = 24, id = 267, coords = vector3(1594.82, 6448.11, 25.32), scale = 0.7, useblip = true},
+    {
+        title = 'Pops Diner', 
+        colour = 24, 
+        id = 267, 
+        coords = vector3(1594.82, 6448.11, 25.32), 
+        scale = 0.7, 
+        useblip = true
+    },
 }
 
 
@@ -50,26 +57,11 @@ Config.CoreSettings = {
         --use 'mythic' for mythic_notify
         --use 'boii' for boii_ui notify
         --use 'ox' for ox_lib notify
-    },    
-    Menu = {
-        Type = 'qb', -- menu script name, support for qb-menu, jixel-menu, boii_ui menu and ox_lib context menu
-        --EDIT MENUS.LUA TO ADD YOUR OWN CUSTOM MENU SCRIPT 
-        --use 'qb' for qb-menu
-        --use 'jixel' for jixel-menu
-        --use 'boii' for boii_ui-menu
-        --use 'ox' for ox_lib context menu
-        --use 'custom' for your own custom menu
     },
     Inventory = { -- support for qb-inventory and ox_inventory
         Type = 'qb',
         --use 'qb' for qb-inventory
         --use 'ox' for ox_inventory
-    },
-    Shop = {
-        Type = 'qb',  -- support for qb-inventory shops, jim- shops and ox_inventory shops
-        --use 'qb' for qb-inventory hops
-        --use 'jim' for jim-shops
-        --use 'ox' for ox_inventory shops
     },
     Sound = {
         UseInteractSound = true, -- set to true to play sound when performing certain actions 
@@ -147,10 +139,37 @@ Config.Animations = {
         dict = "amb@prop_human_bbq@male@idle_a",
         anim = "idle_b",
         flag = 41,
+        prop = 'v_ind_cfknife',
+        bone = 57005,
+        pos = vec3(0.2, 0.14, -0.01),
+        rot = vec3(1.0, 4.0, 57.0),
     },
     CookFood = {
         dict = "amb@prop_human_bbq@male@idle_a",
         anim = "idle_b",
         flag = 41,
+    },
+}
+
+Config.Language = {
+    ProgressBar = {
+        WashHands = 'Washing hands',
+        PrepareDrinks = 'Preparing drink',
+        PrepareSlushie = 'Preparing slushie',
+        PrepareIngredients = 'Preparing ingredients',
+        CookFood = 'Cooking food',
+    },
+    Notifications = {
+        Duty = 'You must be clocked on duty to proceed!',
+        Busy = 'You are already doing something!',
+        Cancelled = 'Action cancelled!',
+        Failed = 'Action failed!',
+        CantCarry = 'You cant carry anymore!',
+        NoItems = 'You are missing items - check the requirements!',
+        DrinkPrepared = 'Drink prepared!',
+        SlushiePrepared = 'Slushie prepared!',
+        IngredientPrepared = 'Ingredient prepared!',
+        FoodCooked = 'Meal cooked!',
+        VehicleRented = 'You have already rented a vehicle, return it first!',
     },
 }

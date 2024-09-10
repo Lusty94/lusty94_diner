@@ -1,703 +1,327 @@
-local MenuType = Config.CoreSettings.Menu.Type
-
-
--------------------------------------------------------< SMOOTHIE MENU START >---------------------------------------------------
-local SlushieMenuDiner = {
-    {
-        header = "🥤 Prepare Fresh Slushies!",
-        isMenuHeader = true,
-    },  
-    {   
-        header = "🫐 Prepare Blue Raspberry Slushie",
-        txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Blue Raspberry Syrup </br> Slushie Cup",
-        params = {
-            event = "lusty94_diner:client:PrepareBlueRaspberrySlushie",
-        }
-    },               
-    {   
-        header = "🍹 Prepare Tropical Slushie",
-        txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Tropical Syrup </br> Slushie Cup",
-        params = {
-            event = "lusty94_diner:client:PrepareTropicalSlushie",
-        }
-    },               
-    {   
-        header = "🍓 Prepare Strawberry Slushie",
-        txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Strawberry Syrup </br> Slushie Cup",
-        params = {
-            event = "lusty94_diner:client:PrepareStrawberrySlushie",
-        }
-    },               
-    {   
-        header = "🍋 Prepare Lemon N Lime Slushie",
-        txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Lemon N Lime Syrup </br> Slushie Cup",
-        params = {
-            event = "lusty94_diner:client:PrepareLemonLimeSlushie",
-        }
-    },               
-    {   
-        header = "🍇 Prepare Grape Slushie",
-        txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Grape Syrup </br> Slushie Cup",
-        params = {
-            event = "lusty94_diner:client:PrepareGrapeSlushie",
-        }
-    },               
-    {   
-        header = "🍒 Prepare Cherry Slushie",
-        txt = "<u>Ingredients Required:</u> </br> Crushed Ice </br> Cherry Syrup </br> Slushie Cup",
-        params = {
-            event = "lusty94_diner:client:PrepareCherrySlushie",
-        }
-    },               
-    {
-        header = "❌ Close",
-        txt = "",
-        params = {
-            event = "qb-menu:closeMenu",
-        }
-    },
-}
-
+--slushie menu
 lib.registerContext({
     id = 'SlushieMenuDiner',
     title = '🥤 Prepare Fresh Slushies!',
     options = {
       {
-        title = '🥤 Get Slushie Cup',
+        title = 'Get Slushie Cup',
         event = 'lusty94_diner:client:GiveSlushieCup',
         arrow = true,
+        icon = ItemImage('slushiecup'),
+        image = ItemImage('slushiecup'),
       },
       {
-        title = '🫐 Prepare Blue Raspberry Slushie',
+        title = 'Prepare Blue Raspberry Slushie',
         event = 'lusty94_diner:client:PrepareBlueRaspberrySlushie',
         arrow = true,
-        metadata = {
-            {label = 'Crushed Ice Required', value = 1},
-            {label = 'Blue Raspberry Syrup Required', value = 1},
-            {label = 'Slushie Cup Required', value = 1},
-          },
+        description = 'Required Ingredients: \n Crushed Ice \n Blue Raspberry Syrup \n Slushie Cup',
+        icon = ItemImage('blueraspberryslushie'),
+        image = ItemImage('blueraspberryslushie'),
       },
       {
-        title = '🍹 Prepare Tropical Slushie',
+        title = 'Prepare Tropical Slushie',
         event = 'lusty94_diner:client:PrepareTropicalSlushie',
         arrow = true,
-        metadata = {
-            {label = 'Crushed Ice Required', value = 1},
-            {label = 'Tropical Syrup Required', value = 1},
-            {label = 'Slushie Cup Required', value = 1},
-          },
+        description = 'Required Ingredients: \n Crushed Ice \n Tropical Syrup \n Slushie Cup',
+        icon = ItemImage('tropicalslushie'),
+        image = ItemImage('tropicalslushie'),
       },
       {
-        title = '🍓 Prepare Strawberry Slushie',
+        title = 'Prepare Strawberry Slushie',
         event = 'lusty94_diner:client:PrepareStrawberrySlushie',
         arrow = true,
-        metadata = {
-            {label = 'Crushed Ice Required', value = 1},
-            {label = 'Strawberry Syrup Required', value = 1},
-            {label = 'Slushie Cup Required', value = 1},
-          },
+        description = 'Required Ingredients: \n Crushed Ice \n Strawberry Syrup \n Slushie Cup',
+        icon = ItemImage('strawberryslushie'),
+        image = ItemImage('strawberryslushie'),
       },
       {
-        title = '🍋 Prepare Lemon N Lime Slushie',
+        title = 'Prepare Lemon N Lime Slushie',
         event = 'lusty94_diner:client:PrepareLemonLimeSlushie',
         arrow = true,
-        metadata = {
-            {label = 'Crushed Ice Required', value = 1},
-            {label = 'Lemon N Lime Syrup Required', value = 1},
-            {label = 'Slushie Cup Required', value = 1},
-          },
+        description = 'Required Ingredients: \n Crushed Ice \n Lemon N Lime Syrup \n Slushie Cup',
+        icon = ItemImage('lemonlimeslushie'),
+        image = ItemImage('lemonlimeslushie'),
       },
       {
-        title = '🍊 Prepare Orange Slushie',
+        title = 'Prepare Orange Slushie',
         event = 'lusty94_diner:client:PrepareOrangeSlushie',
         arrow = true,
-        metadata = {
-            {label = 'Crushed Ice Required', value = 1},
-            {label = 'Orange Syrup Required', value = 1},
-            {label = 'Slushie Cup Required', value = 1},
-          },
+        description = 'Required Ingredients: \n Crushed Ice \n Orange Syrup \n Slushie Cup',
+        icon = ItemImage('orangeslushie'),
+        image = ItemImage('orangeslushie'),
       },
       {
-        title = '🍇 Prepare Grape Slushie',
+        title = 'Prepare Grape Slushie',
         event = 'lusty94_diner:client:PrepareGrapeSlushie',
         arrow = true,
-        metadata = {
-            {label = 'Crushed Ice Required', value = 1},
-            {label = 'Grape Syrup Required', value = 1},
-            {label = 'Slushie Cup Required', value = 1},
-          },
+        description = 'Required Ingredients: \n Crushed Ice \n Grape Syrup \n Slushie Cup',
+        icon = ItemImage('grapeslushie'),
+        image = ItemImage('grapeslushie'),
       },
       {
-        title = '🍒 Prepare Cherry Slushie',
+        title = 'Prepare Cherry Slushie',
         event = 'lusty94_diner:client:PrepareCherrySlushie',
         arrow = true,
-        metadata = {
-            {label = 'Crushed Ice Required', value = 1},
-            {label = 'Cherry Syrup Required', value = 1},
-            {label = 'Slushie Cup Required', value = 1},
-          },
+        description = 'Required Ingredients: \n Crushed Ice \n Cherry Syrup \n Slushie Cup',
+        icon = ItemImage('cherryslushie'),
+        image = ItemImage('cherryslushie'),
       },
             
     }
 })
 
-
-RegisterNetEvent('lusty94_diner:client:SlushieMenu', function()
-    if MenuType == 'qb' then
-        exports['qb-menu']:openMenu(SlushieMenuDiner)
-    elseif MenuType == 'jixel' then
-        exports['jixel-menu']:openMenu(SlushieMenuDiner)
-    elseif MenuType == 'ox' then
-        lib.showContext('SlushieMenuDiner')
-    elseif MenuType == 'custom' then
-        --insert custom menu code here
-    end
-end)
--------------------------------------------------------< SMOOTHIE MENU END >---------------------------------------------------
-
-
-
-
--------------------------------------------------------< HOT DRINKS MENU START >---------------------------------------------------
-local HotDrinksMenuDiner = {
-    {
-        header = "☕ Prepare Fresh Fruit Smoothies!",
-        isMenuHeader = true,
-    },  
-    {   
-        header = "☕ Get A Mug",
-        params = {
-            event = "lusty94_diner:client:GiveMug",
-        }
-    },          
-    {   
-        header = "🍵 Prepare Cup of Tea",
-        txt = "Mug Required",
-        params = {
-            event = "lusty94_diner:client:PrepareTea",
-        }
-    },       
-    {   
-        header = "☕ Prepare Cup of Coffee",
-        txt = "Mug Required",
-        params = {
-            event = "lusty94_diner:client:PrepareCoffee",
-        }
-    },       
-    {   
-        header = "🍫 Prepare Cup of Hot Chocolate",
-        txt = "Mug Required",
-        params = {
-            event = "lusty94_diner:client:PrepareHotChocolate",
-        }
-    },       
-    {
-        header = "❌ Close",
-        txt = "",
-        params = {
-            event = "qb-menu:closeMenu",
-        }
-    },
-}
-
+--hot drinks menu
 lib.registerContext({
     id = 'HotDrinksMenuDiner',
     title = '☕ Prepare Hot Drinks!',
     options = {
       {
-        title = '☕ Get A Mug',
-        icon = 'mug-saucer',
+        title = 'Get A Mug',
+        icon = ItemImage('mug'),
+        image = ItemImage('mug'),
         event = 'lusty94_diner:client:GiveMug',
         arrow = true,
       },
       {
-        title = '🍵 Prepare Cup of Tea', 
+        title = 'Prepare Cup of Tea', 
         event = 'lusty94_diner:client:PrepareTea',
-        description = 'Mug Required',
+        icon = ItemImage('tea'),
+        image = ItemImage('tea'),
         arrow = true,
       },
       {
-        title = '☕Prepare Cup of Coffee', 
+        title = 'Prepare Cup of Coffee', 
         event = 'lusty94_diner:client:PrepareCoffee',
-        description = 'Mug Required',
+        icon = ItemImage('coffee'),
+        image = ItemImage('coffee'),
         arrow = true,
       },
       {
-        title = '🍫 Prepare Cup of Hot Chocolate', 
+        title = 'Prepare Cup of Hot Chocolate', 
         event = 'lusty94_diner:client:PrepareHotChocolate',
-        description = 'Mug Required',
+        icon = ItemImage('hotchocolate'),
+        image = ItemImage('hotchocolate'),
         arrow = true,
       },
     }
 })
 
 
-RegisterNetEvent('lusty94_diner:client:HotDrinksMenu', function()
-    if MenuType == 'qb' then
-        exports['qb-menu']:openMenu(HotDrinksMenuDiner)
-    elseif MenuType == 'jixel' then
-        exports['jixel-menu']:openMenu(HotDrinksMenuDiner)
-    elseif MenuType == 'ox' then
-        lib.showContext('HotDrinksMenuDiner')
-    elseif MenuType == 'custom' then
-        --insert custom menu code here
-    end
-end)
--------------------------------------------------------< HOT DRINKS MENU END >---------------------------------------------------
-
-
-
-
--------------------------------------------------------< HOT DRINKS MENU START >---------------------------------------------------
-local SoftDrinksMenuDiner = {
-    {
-        header = "🥤 Prepare Soft Drinks!",
-        isMenuHeader = true,
-    },  
-    {   
-        header = "🥤 Get A Soft Drinks Cup",
-        params = {
-            event = "lusty94_diner:client:GiveSoftDrinksCup",
-        }
-    },          
-    {   
-        header = "🥤 Prepare Cup of E-Cola",
-        txt = "Soft Drinks Cup Required",
-        params = {
-            event = "lusty94_diner:client:PrepareECola",
-        }
-    },       
-    {   
-        header = "🥤 Prepare Cup of E-Cola Light",
-        txt = "Soft Drinks Cup Required",
-        params = {
-            event = "lusty94_diner:client:PrepareEColaLight",
-        }
-    },       
-    {   
-        header = "🍋 Prepare Cup of Sprunk",
-        txt = "Soft Drinks Cup Required",
-        params = {
-            event = "lusty94_diner:client:PrepareSprunk",
-        }
-    },       
-    {   
-        header = "🍊 Prepare Cup of Orange Soda",
-        txt = "Soft Drinks Cup Required",
-        params = {
-            event = "lusty94_diner:client:PrepareOrangeSoda",
-        }
-    },       
-    {
-        header = "❌ Close",
-        txt = "",
-        params = {
-            event = "qb-menu:closeMenu",
-        }
-    },
-}
-
+--soft drinks menu
 lib.registerContext({
     id = 'SoftDrinksMenuDiner',
     title = '🥤 Prepare Soft Drinks!',
     options = {
       {
-        title = '🥤 Get A Soft Drinks Cup', 
+        title = 'Get A Soft Drinks Cup', 
+        icon = ItemImage('softdrinkscup'),
+        image = ItemImage('softdrinkscup'),
         event = 'lusty94_diner:client:GiveSoftDrinksCup',
         arrow = true,
       },
       {
-        title = '🥤 Prepare Cup of E-Cola', 
+        title = 'Prepare Cup of E-Cola', 
         event = 'lusty94_diner:client:PrepareECola',
-        description = 'Soft Drinks Cup Required',
+        icon = ItemImage('ecola'),
+        image = ItemImage('ecola'),
         arrow = true,
       },
       {
-        title = '🥤 Prepare Cup of E-Cola Light', 
+        title = 'Prepare Cup of E-Cola Light', 
         event = 'lusty94_diner:client:PrepareEColaLight',
-        description = 'Soft Drinks Cup Required',
+        icon = ItemImage('ecolalight'),
+        image = ItemImage('ecolalight'),
         arrow = true,
       },
       {
-        title = '🍋 Prepare Cup of Sprunk', 
+        title = 'Prepare Cup of Sprunk', 
         event = 'lusty94_diner:client:PrepareSprunk',
-        description = 'Soft Drinks Cup Required',
+        icon = ItemImage('sprunk'),
+        image = ItemImage('sprunk'),
         arrow = true,
       },
       {
-        title = '🍊 Prepare Cup of Orange Soda', 
+        title = 'Prepare Cup of Orange Soda', 
         event = 'lusty94_diner:client:PrepareOrangeSoda',
-        description = 'Soft Drinks Cup Required',
+        icon = ItemImage('orangesoda'),
+        image = ItemImage('orangesoda'),
         arrow = true,
       },
     }
 })
 
-
-RegisterNetEvent('lusty94_diner:client:SoftDrinksMenu', function()
-    if MenuType == 'qb' then
-        exports['qb-menu']:openMenu(SoftDrinksMenuDiner)
-    elseif MenuType == 'jixel' then
-        exports['jixel-menu']:openMenu(SoftDrinksMenuDiner)
-    elseif MenuType == 'ox' then
-        lib.showContext('SoftDrinksMenuDiner')
-    elseif MenuType == 'custom' then
-        --insert custom menu code here
-    end
-end)
--------------------------------------------------------< HOT DRINKS MENU END >---------------------------------------------------
-
-
-
--------------------------------------------------------< HOT DRINKS MENU START >---------------------------------------------------
-local ChoppingBoardMenuDiner = {
-    {
-        header = "🍴 Prepare Fresh Ingredients!",
-        isMenuHeader = true,
-    },          
-    {   
-        header = "🔪 Get Kitchen Knife",
-        params = {
-            isServer = true,
-            event = "lusty94_diner:server:GiveKitchenKnife",
-        }
-    },          
-    {   
-        header = "🗡 Get Bread Knife",
-        params = {
-            isServer = true,
-            event = "lusty94_diner:server:GiveBreadKnife",
-        }
-    },          
-    {   
-        header = "🍞 Prepare Sliced Bread",
-        txt = "<u>Kitchen Knife Required</u> </br> Bread Required: 1",
-        params = {
-            event = "lusty94_diner:client:PrepareSlicedBread",
-        }
-    },
-    {   
-        header = "🥓 Prepare Sliced Bacon",
-        txt = "<u>Kitchen Knife Required</u> </br> Bacon Required: 1",
-        params = {
-            event = "lusty94_diner:client:PrepareSlicedBacon",
-        }
-    },
-    {   
-        header = "🐟 Prepare Tuna Chunks",
-        txt = "<u>Kitchen Knife Required</u> </br> Tuna Required: 1",
-        params = {
-            event = "lusty94_diner:client:PrepareTunaChunks",
-        }
-    },
-    {   
-        header = "🥑 Prepare Sliced Avocado",
-        txt = "<u>Kitchen Knife Required</u> </br> Avocado Required: 1",
-        params = {
-            event = "lusty94_diner:client:PrepareSlicedAvocado",
-        }
-    },
-    {   
-        header = "🦃 Prepare Turkey Slices",
-        txt = "<u>Kitchen Knife Required</u> </br> Turkey Required: 1",
-        params = {
-            event = "lusty94_diner:client:PrepareTurkeySlices",
-        }
-    },
-    {
-        header = "❌ Close",
-        txt = "",
-        params = {
-            event = "qb-menu:closeMenu",
-        }
-    },
-}
 
 lib.registerContext({
     id = 'ChoppingBoardMenuDiner',
     title = '🍴 Prepare Fresh Ingredients!',
     options = {
+        {
+          title = 'Get Kitchen Knife',
+          onSelect = function()
+              TriggerServerEvent('lusty94_diner:server:GiveKitchenKnife')
+          end,
+          arrow = true,
+          icon = ItemImage('kitchenknife'),
+          image = ItemImage('kitchenknife'),
+              
+        },
        {
-            title = '🔪 Get Kitchen Knife',
-            onSelect = function()
-                TriggerServerEvent('lusty94_diner:server:GiveKitchenKnife')
-            end,
-            arrow = true,
-      },
-       {
-            title = '🗡 Get Bread Knife',
-            onSelect = function()
-                TriggerServerEvent('lusty94_diner:server:GiveBreadKnife')
-            end,
-            arrow = true,
+          title = 'Get Bread Knife',
+          onSelect = function()
+              TriggerServerEvent('lusty94_diner:server:GiveBreadKnife')
+          end,
+          arrow = true,
+          icon = ItemImage('breadknife'),
+          image = ItemImage('breadknife'),
       },
       {
-        title = '🍞 Prepare Sliced Bread',
+        title = 'Prepare Sliced Bread',
         event = 'lusty94_diner:client:PrepareSlicedBread',
-        metadata = {
-            {label = 'Bread Knife Required'},
-            {label = 'Bread  Required', value = 1},
-          },
+        description = 'Bread Knife Required',
+        icon = ItemImage('slicedbread'),
+        image = ItemImage('slicedbread'),
         arrow = true,
       },          
       {
-        title = '🥓 Prepare Sliced Bacon',
+        title = 'Prepare Sliced Bacon',
         event = 'lusty94_diner:client:PrepareSlicedBacon',
-        metadata = {
-            {label = 'Kitchen Knife Required'},
-            {label = 'Bacon Required', value = 1},
-          },
+        description = 'Kitchen Knife Required',
+        icon = ItemImage('slicedbacon'),
+        image = ItemImage('slicedbacon'),
         arrow = true,
       },          
       {
-        title = '🐟 Prepare Tuna Chunks',
+        title = 'Prepare Tuna Chunks',
         event = 'lusty94_diner:client:PrepareTunaChunks',
-        metadata = {
-            {label = 'Kitchen Knife Required'},
-            {label = 'Tuna Required', value = 1},
-          },
+        description = 'Kitchen Knife Required',
+        icon = ItemImage('tunachunks'),
+        image = ItemImage('tunachunks'),
         arrow = true,
       },          
       {
-        title = '🥑 Prepare Sliced Avocado',
+        title = 'Prepare Sliced Avocado',
         event = 'lusty94_diner:client:PrepareSlicedAvocado',
-        metadata = {
-            {label = 'Kitchen Knife Required'},
-            {label = 'Avocado Required', value = 1},
-          },
+        description = 'Kitchen Knife Required',
+        icon = ItemImage('slicedavocado'),
+        image = ItemImage('slicedavocado'),
         arrow = true,
       },          
       {
-        title = '🦃 Prepare Turkey Slices',
+        title = 'Prepare Turkey Slices',
         event = 'lusty94_diner:client:PrepareTurkeySlices',
-        metadata = {
-            {label = 'Kitchen Knife Required'},
-            {label = 'Turkey Required', value = 1},
-          },
+        description = 'Kitchen Knife Required',
+        icon = ItemImage('turkeyslices'),
+        image = ItemImage('turkeyslices'),
         arrow = true,
       },          
     }
 })
 
 
-RegisterNetEvent('lusty94_diner:client:ChoppingBoardMenu', function()
-    if MenuType == 'qb' then
-        exports['qb-menu']:openMenu(ChoppingBoardMenuDiner)
-    elseif MenuType == 'jixel' then
-        exports['jixel-menu']:openMenu(ChoppingBoardMenuDiner)
-    elseif MenuType == 'ox' then
-        lib.showContext('ChoppingBoardMenuDiner')
-    elseif MenuType == 'custom' then
-        --insert custom menu code here
-    end
-end)
--------------------------------------------------------< HOT DRINKS MENU END >---------------------------------------------------
-
-
-
--------------------------------------------------------< HOT DRINKS MENU START >---------------------------------------------------
-local SandwichesMenuDiner = {
-    {
-        header = "🥪 Prepare Grilled Sandwiches!",
-        isMenuHeader = true,
-    },          
-    {   
-        header = "🧀 Prepare Grilled Cheese",
-        txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Cheese Slices",
-        params = {
-            event = "lusty94_diner:client:PrepareGrilledCheese",
-        }
-    },
-    {   
-        header = "🐔🧀 Prepare Chicken & Mozzarella",
-        txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Chicken Breast <p> 2x Mozzarella Cheese <p> 1x Balsamic Glaze",
-        params = {
-            event = "lusty94_diner:client:PrepareChickenMozzarella",
-        }
-    },
-    {   
-        header = "🥓🥑 Prepare Bacon & Avocado",
-        txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Sliced Bacon <p> 2x Sliced Avocado",
-        params = {
-            event = "lusty94_diner:client:PrepareBaconAvocado",
-        }
-    },
-    {   
-        header = "🐟🌽 Prepare Tuna & Sweetcorn",
-        txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Tuna Chunks <p> 1x Sweetcorn",
-        params = {
-            event = "lusty94_diner:client:PrepareTunaSweetcorn",
-        }
-    },
-    {   
-        header = "🦃🍒 Prepare Turkey & Cranberry",
-        txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Turkey Slices <p> 1x Cranberry Sauce",
-        params = {
-            event = "lusty94_diner:client:PrepareTurkeyCranberry",
-        }
-    },
-    {   
-        header = "🥚🥓 Prepare Eggs & Bacon",
-        txt = "<u>Ingredients Required:</u> <br> 2x Sliced Bread <p> Butter <p> 2x Egg <p> 2x Sliced Bacon",
-        params = {
-            event = "lusty94_diner:client:PrepareEggsBacon",
-        }
-    },
-    {
-        header = "❌ Close",
-        txt = "",
-        params = {
-            event = "qb-menu:closeMenu",
-        }
-    },
-}
 
 lib.registerContext({
     id = 'SandwichesMenuDiner',
     title = '🥪 Prepare Grilled Sandwiches!',
     options = {
       {
-        title = '🧀 Prepare Grilled Cheese',
+        title = 'Prepare Grilled Cheese',
         event = 'lusty94_diner:client:PrepareGrilledCheese',
-        metadata = {
-            {label = 'Sliced Bread Required', value = 2},
-            {label = 'Butter Required', value = 1},
-            {label = 'Cheese Slices Required', value = 2},
-          },
+        description = 'Ingredients Required: \n Sliced Bread x2 \n Butter x1 \n Cheese Slices x2',
+        icon = ItemImage('grilledcheese'),
+        image = ItemImage('grilledcheese'),
         arrow = true,
       },          
       {
-        title = '🐔🧀 Prepare Chicken & Mozzarella',
+        title = 'Prepare Chicken & Mozzarella',
         event = 'lusty94_diner:client:PrepareChickenMozzarella',
-        metadata = {
-            {label = 'Sliced Bread Required', value = 2},
-            {label = 'Butter Required', value = 1},
-            {label = 'Chicken Breast Required', value = 2},
-            {label = 'Mozzarella Cheese Required', value = 2},
-            {label = 'Balsamic Glaze Required', value = 1},
-          },
+        description = 'Ingredients Required: \n Sliced Bread x2 \n Butter x1 \n Chicken Breast x2 \n Mozzarella Cheese x2 \n Balsamic Glaze x1',
+        icon = ItemImage('grilledchickenmozzarella'),
+        image = ItemImage('grilledchickenmozzarella'),
         arrow = true,
       },          
       {
-        title = '🥓🥑 Prepare Bacon & Avocado',
+        title = 'Prepare Bacon & Avocado',
         event = 'lusty94_diner:client:PrepareBaconAvocado',
-        metadata = {
-            {label = 'Sliced Bread Required', value = 2},
-            {label = 'Butter Required', value = 1},
-            {label = 'Sliced Bacon Required', value = 2},
-            {label = 'Sliced Avocado Required', value = 2},
-          },
+        description = 'Ingredients Required: \n Sliced Bread x2 \n Butter x1 \n Sliced Bacon x2 \n Sliced Avocado x2',
+        icon = ItemImage('grilledbaconavocado'),
+        image = ItemImage('grilledbaconavocado'),
         arrow = true,
       },          
       {
-        title = '🐟🌽 Prepare Tuna & Sweetcorn',
+        title = 'Prepare Tuna & Sweetcorn',
         event = 'lusty94_diner:client:PrepareTunaSweetcorn',
-        metadata = {
-            {label = 'Sliced Bread Required', value = 2},
-            {label = 'Butter Required', value = 1},
-            {label = 'Tuna Chunks Required', value = 2},
-            {label = 'Sweetcorn Required', value = 1},
-          },
+        description = 'Ingredients Required: \n Sliced Bread x2 \n Butter x1 \n Tuna Chunks x2 \n Sweetcorn x1',
+        icon = ItemImage('grilledtunasweetcorn'),
+        image = ItemImage('grilledtunasweetcorn'),
         arrow = true,
       },          
       {
-        title = '🦃🍒 Prepare Turkey & Cranberry',
+        title = 'Prepare Turkey & Cranberry',
         event = 'lusty94_diner:client:PrepareTurkeyCranberry',
-        metadata = {
-            {label = 'Sliced Bread Required', value = 2},
-            {label = 'Butter Required', value = 1},
-            {label = 'Turkey Slices Required', value = 2},
-            {label = 'Cranberry Sauce Required', value = 1},
-          },
+        description = 'Ingredients Required: \n Sliced Bread x2 \n Butter x1 \n Turkey Slices x2 \n Cranberry Sauce x1',
+        icon = ItemImage('grilledturkeycranberry'),
+        image = ItemImage('grilledturkeycranberry'),
         arrow = true,
       },          
       {
-        title = '🥚🥓 Prepare Eggs & Bacon',
+        title = 'Prepare Eggs & Bacon',
         event = 'lusty94_diner:client:PrepareEggsBacon',
-        metadata = {
-            {label = 'Sliced Bread Required', value = 2},
-            {label = 'Butter Required', value = 1},
-            {label = 'Eggs Required', value = 2},
-            {label = 'Sliced Bacon Required', value = 2},
-          },
+        description = 'Ingredients Required: \n Sliced Bread x2 \n Butter x1 \n Eggs x2 \n Sliced Bacon x2',
+        icon = ItemImage('grilledeggsbacon'),
+        image = ItemImage('grilledeggsbacon'),
         arrow = true,
       },          
     }
 })
 
 
-RegisterNetEvent('lusty94_diner:client:SandwichesMenu', function()
-    if MenuType == 'qb' then
-        exports['qb-menu']:openMenu(SandwichesMenuDiner)
-    elseif MenuType == 'jixel' then
-        exports['jixel-menu']:openMenu(SandwichesMenuDiner)
-    elseif MenuType == 'ox' then
-        lib.showContext('SandwichesMenuDiner')
-    elseif MenuType == 'custom' then
-        --insert custom menu code here
-    end
-end)
--------------------------------------------------------< HOT DRINKS MENU END >---------------------------------------------------
 
-
-
-
--------------------------------------------------------------< VEHICLE GARAGE START >---------------------------------------------------------------------
 local vehicleAvailable = Config.CoreSettings.Vehicle.Label
-local GarageMenuDiner = {
-    {
-        header = "🚗 Rent A Work Vehicle",
-        isMenuHeader = true,
-    },  
-    {   
-        header = "🚗 Rent Vehicle",
-        txt = "<br> Vehicle Available: "..vehicleAvailable,
-        params = {
-            event = "lusty94_diner:client:RentVehicle",
-        }
-    },                  
-    {   
-        header = "⬅️ Return Vehicle",
-        params = {
-            event = "lusty94_diner:client:ReturnVehicle",
-        }
-    },           
-    {
-        header = "❌ Close",
-        txt = "",
-        params = {
-            event = "qb-menu:closeMenu",
-        }
-    },
-}
 
 lib.registerContext({
     id = 'GarageMenuDiner',
     title = '🚗 Rent A Work Vehicle',
     options = {
-      {
-        title = '🚗 Rent Vehicle',
-        description = 'Vehicle Available: '..vehicleAvailable,
-        event = 'lusty94_diner:client:RentVehicle',
-        arrow = true,
-      },
-      {
-        title = '⬅️ Return Vehicle',
-        event = 'lusty94_diner:client:ReturnVehicle',
-        arrow = true,
-      },
+        {
+            title = 'Rent Vehicle',
+            icon = 'car',
+            description = 'Vehicle Available: '..vehicleAvailable,
+            event = 'lusty94_diner:client:RentVehicle',
+            arrow = true,
+        },
+        {
+            title = 'Return Vehicle',
+            icon = 'rotate-left',
+            event = 'lusty94_diner:client:ReturnVehicle',
+            arrow = true,
+        },
     }
-  })
+})
+
+
+
+
+-------------------------------< EVENTS >----------------
+RegisterNetEvent('lusty94_diner:client:SlushieMenu', function()
+    lib.showContext('SlushieMenuDiner')
+end)
+
+RegisterNetEvent('lusty94_diner:client:HotDrinksMenu', function()
+    lib.showContext('HotDrinksMenuDiner')
+end)
+
+RegisterNetEvent('lusty94_diner:client:SoftDrinksMenu', function()
+    lib.showContext('SoftDrinksMenuDiner')
+end)
+
+RegisterNetEvent('lusty94_diner:client:ChoppingBoardMenu', function()
+    lib.showContext('ChoppingBoardMenuDiner')
+end)
+
+RegisterNetEvent('lusty94_diner:client:SandwichesMenu', function()
+    lib.showContext('SandwichesMenuDiner')
+end)
 
 RegisterNetEvent('lusty94_diner:client:OpenGarageMenu', function(data)
-    if MenuType == 'qb' then    
-        exports['qb-menu']:openMenu(GarageMenuDiner)            
-    elseif MenuType == 'jixel' then      
-        exports['jixel-menu']:openMenu(GarageMenuDiner)
-    elseif MenuType == 'ox'then
-        lib.showContext('GarageMenuDiner')
-    elseif MenuType == 'custom' then
-        --insert custom menu code here
-    end
+    lib.showContext('GarageMenuDiner')
 end)
--------------------------------------------------------------< VEHICLE GARAGE END >---------------------------------------------------------------------
